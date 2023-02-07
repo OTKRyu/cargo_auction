@@ -4,7 +4,7 @@
   "description": "auction program between container owner and trucker",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "yarn mocah test/**/*.ts -r ts-node/register"
   },
   "repository": {
     "type": "git",
