@@ -1,0 +1,23 @@
+{
+  "name": "container_auction",
+  "version": "1.0.0",
+  "description": "auction program between container owner and trucker",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OTKRyu/container_auction.git"
+  },
+  "keywords": [
+    "auction",
+    "container"
+  ],
+  "author": "otkryu",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/OTKRyu/container_auction/issues"
+  },
+  "homepage": "https://github.com/OTKRyu/container_auction#readme"
+}
