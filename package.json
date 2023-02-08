@@ -1,5 +1,5 @@
 {
-  "name": "container_auction",
+  "name": "cargo_auction",
   "version": "1.0.0",
   "description": "auction program between container owner and trucker",
   "main": "index.js",
@@ -8,18 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OTKRyu/container_auction.git"
+    "url": "git+https://github.com/OTKRyu/cargo_auction.git"
   },
   "keywords": [
     "auction",
-    "container"
+    "cargos"
   ],
   "author": "otkryu",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/OTKRyu/container_auction/issues"
+    "url": "https://github.com/OTKRyu/carge_auction/issues"
   },
-  "homepage": "https://github.com/OTKRyu/container_auction#readme",
+  "homepage": "https://github.com/OTKRyu/cargo_auction#readme",
   "dependencies": {
     "typescript": "^4.9.5"
   },
