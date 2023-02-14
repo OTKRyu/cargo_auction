@@ -2,7 +2,7 @@ interface Trucker {
   id: number;
   userName: string;
   account: string;
-  getCargoList: Function;
+  getCargoes: Function;
   participateAuction: Function;
   getTransportFee: Function;
   changeCargoStatus: Function;

@@ -2,7 +2,7 @@ interface Owner {
   id: number;
   userName: string;
   account: string;
-  getCargos: Function;
+  getCargoes: Function;
   registerAuction: Function;
   payTransportFee: Function;
   changeCargoStatus: Function;

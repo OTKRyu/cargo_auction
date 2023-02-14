@@ -4,7 +4,7 @@ interface Admin {
   getCargos: string;
   getOwners: Function;
   getTruckers: Function;
-  checkCargoStatus: Function;
+  getAuctions: Function;
 }
 
 export default Admin;
