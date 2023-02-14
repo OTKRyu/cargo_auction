@@ -1,9 +1,11 @@
+import Account from "./account";
+
 interface Owner {
   id: number;
   userName: string;
-  account: string;
-  getCargoes: Function;
-  registerAuction: Function;
+  account: Account;
+  createCargo: Function;
+  createAuction: Function;
   payTransportFee: Function;
   changeCargoStatus: Function;
 }

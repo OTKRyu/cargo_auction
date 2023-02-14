@@ -1,18 +1,39 @@
-type bid = {
+type Bid = {
   id: number;
+  auctionId: number;
   truckerId: number;
   transferFee: number;
 };
 
-type Auction = {
+class Auction extends Object {
   id: number;
   cargoId: number;
-  ownerid: number;
+  ownerId: number;
   auctionExpireDate: string;
   auctionStartDate: string;
-  upperLimit: number;
-  auction: Array<bid>;
+  transferFeeUpperLimit: number;
+  auctionHistory: Array<Bid>;
+  finalTruckerId: number | undefined;
   status: "todo" | "progress" | "done";
-};
 
-export default Auction;
+  constructor(
+    id: number,
+    cargoId: number,
+    ownerId: number,
+    auctionExpireDate: string,
+    auctionStartDate: string,
+    transferFeeUpperLimit: number
+  ) {
+    super();
+    this.id = id;
+    this.cargoId = cargoId;
+    this.ownerId = ownerId;
+    this.auctionExpireDate = auctionExpireDate;
+    this.auctionStartDate = auctionStartDate;
+    this.transferFeeUpperLimit = transferFeeUpperLimit;
+    this.status = "todo";
+    this.auctionHistory = [];
+  }
+}
+
+export { Auction, Bid };

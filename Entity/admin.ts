@@ -2,9 +2,9 @@ interface Admin {
   id: number;
   userName: string;
   getCargos: string;
+  getAuctions: Function;
   getOwners: Function;
   getTruckers: Function;
-  getAuctions: Function;
 }
 
 export default Admin;
