@@ -2,13 +2,13 @@ import Account from "../Entity/account";
 
 class AccountImpl implements Account {
   balance: number;
-  accountId: string;
-  constructor(balance: number, accountId: string) {
-    this.balance = 0;
-    this.accountId = accountId;
+  id: string;
+  constructor(balance: number, id: string) {
+    this.balance = balance;
+    this.id = id;
   }
   deposit(amount: number) {
-    this.balance -= amount;
+    this.balance += amount;
   }
   withdraw(amount: number) {
     this.balance -= amount;

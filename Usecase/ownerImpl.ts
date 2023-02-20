@@ -1,6 +1,6 @@
 import Owner from "../Entity/owner";
 import Cargo from "../Entity/cargo";
-import { Auction } from "../Entity/auction";
+import { Auction, Bid } from "../Entity/auction";
 import Account from "../Entity/account";
 
 class OwnerImpl implements Owner {
@@ -18,10 +18,17 @@ class OwnerImpl implements Owner {
     id: number,
     name: string,
     category: string,
-    transferDueDate: string,
+    transportDueDate: string,
     description: string | undefined
   ) {
-    return new Cargo(id, name, category, transferDueDate, description, this.id);
+    return new Cargo(
+      id,
+      name,
+      category,
+      transportDueDate,
+      description,
+      this.id
+    );
   }
 
   createAuction(
@@ -29,7 +36,7 @@ class OwnerImpl implements Owner {
     cargoId: number,
     auctionExpireDate: string,
     auctionStartDate: string,
-    transferFeeUpperLimit: number
+    transportFeeUpperLimit: number
   ) {
     return new Auction(
       id,
@@ -37,28 +44,31 @@ class OwnerImpl implements Owner {
       this.id,
       auctionExpireDate,
       auctionStartDate,
-      transferFeeUpperLimit
+      transportFeeUpperLimit
     );
   }
 
   payTransportFee(auction: Auction, truckerAccount: Account) {
-    let minimum: number = Infinity;
-    minimum = auction.auctionHistory.reduce((accumulater, currentBid) => {
-      if (accumulater <= currentBid.transferFee) {
-        return accumulater;
-      } else {
-        return currentBid.transferFee;
-      }
-    }, minimum);
-    this.account.withdraw(minimum);
-    truckerAccount.deposit(minimum);
+    if (auction.status !== "done") {
+      return false;
+    }
+
+    let minimumBid: Bid | undefined;
+    minimumBid = auction.findMinimumBid();
+    if (minimumBid === undefined) {
+      return false;
+    }
+    this.account.withdraw(minimumBid.transportFee);
+    truckerAccount.deposit(minimumBid.transportFee);
+    return true;
   }
 
   changeCargoStatus(cargo: Cargo) {
-    if (cargo.status === "progress") {
+    if (cargo.ownerId === this.id && cargo.status === "progress") {
       cargo.status = "arrived";
+      return true;
     }
-    return cargo;
+    return false;
   }
 }
 
