@@ -4,7 +4,7 @@
   "description": "auction program between container owner and trucker",
   "main": "index.js",
   "scripts": {
-    "test": "yarn mocah test/**/*.ts -r ts-node/register",
+    "test": "yarn mocha test/**/*.ts -r ts-node/register",
     "build": "tsc"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
     "chai": "^4.3.7",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1"
   }
 }
