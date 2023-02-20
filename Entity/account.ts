@@ -1,8 +1,8 @@
 interface Account {
   balance: number;
-  accountId: string;
-  deposit: Function;
-  withdraw: Function;
+  id: string;
+  deposit(amount: number): void;
+  withdraw(amount: number): void;
 }
 
 export default Account;

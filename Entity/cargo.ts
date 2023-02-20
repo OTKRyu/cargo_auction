@@ -2,7 +2,7 @@ class Cargo extends Object {
   id: number;
   name: string;
   category: string;
-  transferDueDate: string;
+  transportDueDate: string;
   description: string | undefined;
   ownerId: number;
   status: "todo" | "progress" | "arrived";
@@ -11,7 +11,7 @@ class Cargo extends Object {
     id: number,
     name: string,
     category: string,
-    transferDueDate: string,
+    transportDueDate: string,
     description: string | undefined,
     ownerId: number
   ) {
@@ -19,7 +19,7 @@ class Cargo extends Object {
     this.id = id;
     this.name = name;
     this.category = category;
-    this.transferDueDate = transferDueDate;
+    this.transportDueDate = transportDueDate;
     this.description = description;
     this.ownerId = ownerId;
     this.status = "todo";
