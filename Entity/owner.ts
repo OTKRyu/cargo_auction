@@ -20,8 +20,8 @@ interface Owner {
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ): Auction;
-  payTransportFee(auction: Auction, truckerAccount: Account): boolean;
-  changeCargoStatus(cargo: Cargo): boolean;
+  payTransportFee(auction: Auction, truckerAccount: Account): string;
+  changeCargoStatus(cargo: Cargo): string;
 }
 
 export default Owner;

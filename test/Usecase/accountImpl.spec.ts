@@ -8,11 +8,15 @@ describe("AccountImpl test", () => {
     expect(account.id).to.equal("abc");
   });
 
-  it("accountImpl method test", () => {
+  it("accountImpl method deposit test", () => {
     const account = new AccountImpl(10, "abc");
     account.deposit(5);
     expect(account.balance).to.equal(15);
+  });
+
+  it("accountImpl method deposit test", () => {
+    const account = new AccountImpl(10, "abc");
     account.withdraw(7);
-    expect(account.balance).to.equal(8);
+    expect(account.balance).to.equal(3);
   });
 });

@@ -48,37 +48,33 @@ class Auction extends Object {
     this.auctionHistory = [];
   }
 
-  addBid(bid: Bid) {
-    const minimumBid = this.findMinimumBid();
+  findMinimumTransportFee(): number {
+    if (this.auctionHistory.length === 0) {
+      return this.transportFeeUpperLimit;
+    }
 
-    if (minimumBid === undefined) {
+    let minimumBid: Bid = this.auctionHistory[this.auctionHistory.length - 1];
+    return minimumBid.transportFee;
+  }
+
+  addBid(bid: Bid) {
+    if (bid.auctionId !== this.id) {
+      throw new Error("Your bid doesn't belong this auction");
+    }
+
+    const minimumTransportFee = this.findMinimumTransportFee();
+
+    if (minimumTransportFee === this.transportFeeUpperLimit) {
       this.auctionHistory.push(bid);
       return true;
     }
 
-    if (bid.transportFee > minimumBid.transportFee) {
-      return false;
+    if (bid.transportFee > minimumTransportFee) {
+      throw new Error("Your transportFee is higher than other");
     }
 
     this.auctionHistory.push(bid);
     return true;
-  }
-
-  findMinimumBid(): Bid | undefined {
-    if (this.auctionHistory.length === 0) {
-      return undefined;
-    }
-
-    let minimumBid: Bid = this.auctionHistory[0];
-
-    let i: number;
-    for (i = 0; i < this.auctionHistory.length; i++) {
-      if (minimumBid.transportFee > this.auctionHistory[i].transportFee) {
-        minimumBid = this.auctionHistory[i];
-      }
-    }
-
-    return minimumBid;
   }
 }
 
