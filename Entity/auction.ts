@@ -1,3 +1,5 @@
+import Cargo from "./cargo";
+
 class Bid extends Object {
   id: number;
   auctionId: number;
@@ -20,18 +22,18 @@ class Bid extends Object {
 
 class Auction extends Object {
   id: number;
-  cargoId: number;
+  cargo: Cargo;
   ownerId: number;
   auctionExpireDate: string;
   auctionStartDate: string;
   transportFeeUpperLimit: number;
   auctionHistory: Array<Bid>;
-  finalTruckerId: number | undefined;
+  determinedTruckerId: number | undefined;
   status: "todo" | "progress" | "done";
 
   constructor(
     id: number,
-    cargoId: number,
+    cargo: Cargo,
     ownerId: number,
     auctionExpireDate: string,
     auctionStartDate: string,
@@ -39,7 +41,10 @@ class Auction extends Object {
   ) {
     super();
     this.id = id;
-    this.cargoId = cargoId;
+    if (cargo.ownerId !== ownerId) {
+      throw new Error("Only cargo owner can create auction about the cargo");
+    }
+    this.cargo = cargo;
     this.ownerId = ownerId;
     this.auctionExpireDate = auctionExpireDate;
     this.auctionStartDate = auctionStartDate;
@@ -75,6 +80,19 @@ class Auction extends Object {
 
     this.auctionHistory.push(bid);
     return true;
+  }
+
+  determineTrucker() {
+    if (this.status !== "done") {
+      throw new Error("Auction didn't end yet");
+    }
+
+    if (this.auctionHistory.length === 0) {
+      throw new Error("Nobody participate this auction");
+    }
+
+    this.determinedTruckerId =
+      this.auctionHistory[this.auctionHistory.length - 1].truckerId;
   }
 }
 

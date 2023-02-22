@@ -1,6 +1,6 @@
 import Owner from "../Entity/owner";
 import Cargo from "../Entity/cargo";
-import { Auction, Bid } from "../Entity/auction";
+import { Auction } from "../Entity/auction";
 import Account from "../Entity/account";
 
 class OwnerImpl implements Owner {
@@ -33,14 +33,14 @@ class OwnerImpl implements Owner {
 
   createAuction(
     id: number,
-    cargoId: number,
+    cargo: Cargo,
     auctionExpireDate: string,
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ) {
     return new Auction(
       id,
-      cargoId,
+      cargo,
       this.id,
       auctionExpireDate,
       auctionStartDate,
@@ -50,16 +50,17 @@ class OwnerImpl implements Owner {
 
   payTransportFee(auction: Auction, truckerAccount: Account) {
     if (auction.status !== "done") {
-      return false;
+      throw new Error("your auction isn't done yet");
     }
 
-    let minimumBid: Bid | undefined;
-    minimumBid = auction.findMinimumBid();
-    if (minimumBid === undefined) {
-      return false;
+    let minimumTranportFee: number;
+    minimumTranportFee = auction.findMinimumTransportFee();
+    if (minimumTranportFee === auction.transportFeeUpperLimit) {
+      throw new Error("your auction doesn't have trucker");
     }
-    this.account.withdraw(minimumBid.transportFee);
-    truckerAccount.deposit(minimumBid.transportFee);
+
+    this.account.withdraw(minimumTranportFee);
+    truckerAccount.deposit(minimumTranportFee);
     return true;
   }
 
@@ -68,7 +69,16 @@ class OwnerImpl implements Owner {
       cargo.status = "arrived";
       return true;
     }
-    return false;
+
+    if (cargo.ownerId !== this.id) {
+      throw new Error("This cargo isn't yours");
+    }
+
+    if (cargo.status !== "progress") {
+      throw new Error("Your cargo isn't in progress");
+    }
+
+    throw new Error("Bad access to cargo");
   }
 }
 

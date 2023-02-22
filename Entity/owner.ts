@@ -15,13 +15,13 @@ interface Owner {
   ): Cargo;
   createAuction(
     id: number,
-    cargoId: number,
+    cargo: Cargo,
     auctionExpireDate: string,
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ): Auction;
-  payTransportFee(auction: Auction, truckerAccount: Account): string;
-  changeCargoStatus(cargo: Cargo): string;
+  payTransportFee(auction: Auction, truckerAccount: Account): boolean;
+  changeCargoStatus(cargo: Cargo): boolean;
 }
 
 export default Owner;
