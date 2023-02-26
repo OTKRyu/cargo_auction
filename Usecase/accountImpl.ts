@@ -12,6 +12,9 @@ class AccountImpl implements Account {
     this.balance += amount;
   }
   withdraw(amount: number) {
+    if (this.balance < amount) {
+      throw Error("Account doesn't have enough money");
+    }
     this.balance -= amount;
   }
 }

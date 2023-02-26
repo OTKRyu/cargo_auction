@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import { expect, assert } from "chai";
 import AccountImpl from "../../Usecase/accountImpl";
 
 describe("AccountImpl test", () => {
@@ -14,9 +14,20 @@ describe("AccountImpl test", () => {
     expect(account.balance).to.equal(15);
   });
 
-  it("accountImpl method deposit test", () => {
+  it("accountImpl method withdraw test with enough balance", () => {
     const account = new AccountImpl("abc", 10);
     account.withdraw(7);
     expect(account.balance).to.equal(3);
+  });
+
+  it("accountImpl method withdraw test with not enough balance", () => {
+    const account = new AccountImpl("abc", 10);
+    assert.throw(
+      () => {
+        account.withdraw(11);
+      },
+      Error,
+      "Account doesn't have enough money"
+    );
   });
 });
