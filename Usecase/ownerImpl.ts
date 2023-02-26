@@ -50,14 +50,15 @@ class OwnerImpl implements Owner {
 
   payTransportFee(auction: Auction, truckerAccount: Account) {
     if (auction.status !== "done") {
-      throw new Error("your auction isn't done yet");
+      throw new Error("Your auction isn't done yet");
+    }
+
+    if (auction.determinedTruckerId === undefined) {
+      throw new Error("Your auction doesn't have trucker");
     }
 
     let minimumTranportFee: number;
     minimumTranportFee = auction.findMinimumTransportFee();
-    if (minimumTranportFee === auction.transportFeeUpperLimit) {
-      throw new Error("your auction doesn't have trucker");
-    }
 
     this.account.withdraw(minimumTranportFee);
     truckerAccount.deposit(minimumTranportFee);
