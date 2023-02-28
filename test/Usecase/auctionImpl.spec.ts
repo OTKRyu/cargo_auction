@@ -6,17 +6,6 @@ import AuctionImpl from "../../Usecase/auctionImpl";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
 
-describe("bid test", () => {
-  it("bid property test", () => {
-    const bid = new Bid(0, 1, 2, 10);
-
-    expect(bid.id).to.equal(0);
-    expect(bid.auctionId).to.equal(1);
-    expect(bid.truckerId).to.equal(2);
-    expect(bid.transportFee).to.equal(10);
-  });
-});
-
 describe("auction test", () => {
   const account = new AccountImpl("abc", 0);
   const owner = new OwnerImpl(0, "name", account);
@@ -182,14 +171,6 @@ describe("auction test", () => {
       Error,
       "Auction didn't end yet"
     );
-
-    auction.status = "progress";
-
-    assert.throw(
-      () => auction.determineTrucker(),
-      Error,
-      "Auction didn't end yet"
-    );
   });
 
   it("auction method determineTrucker history empty test", () => {
@@ -211,7 +192,36 @@ describe("auction test", () => {
     );
   });
 
-  it("auction method determineTrucker history empty test", () => {
+  it("auction method determineTrucker test", () => {
+    const localCargo = owner.createCargo(
+      1,
+      "cargo",
+      "container",
+      "2023-02-20",
+      undefined
+    );
+    const localAuction = new AuctionImpl(
+      1,
+      localCargo,
+      owner.id,
+      "2023-02-28",
+      "2023-02-20",
+      500
+    );
+
+    localAuction.status = "done";
+
+    const truckerId = 0;
+
+    const bid = new Bid(0, localAuction.id, truckerId, 10);
+    localAuction.addBid(bid);
+    localAuction.determineTrucker();
+
+    expect(localAuction.determinedTruckerId).to.equal(truckerId);
+    expect(localAuction.cargo.truckerId).to.equal(truckerId);
+  });
+
+  it("auction method startAuction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
@@ -221,12 +231,56 @@ describe("auction test", () => {
       500
     );
 
-    auction.status = "done";
+    auction.startAuction();
 
-    const bid = new Bid(0, auction.id, 0, 10);
-    auction.addBid(bid);
-    auction.determineTrucker();
+    expect(auction.status).to.equal("progress");
+  });
 
-    expect(auction.determinedTruckerId).to.equal(0);
+  it("auction method startAuction wrong status test", () => {
+    const auction = new AuctionImpl(
+      0,
+      cargo,
+      owner.id,
+      "2023-02-28",
+      "2023-02-20",
+      500
+    );
+
+    auction.status = "progress";
+
+    assert.throw(
+      () => auction.startAuction(),
+      Error,
+      "Auction was already started"
+    );
+  });
+
+  it("auction method endAuction test", () => {
+    const auction = new AuctionImpl(
+      0,
+      cargo,
+      owner.id,
+      "2023-02-28",
+      "2023-02-20",
+      500
+    );
+
+    auction.status = "progress";
+    auction.endAuction();
+
+    expect(auction.status).to.equal("done");
+  });
+
+  it("auction method endAuction wrong status test", () => {
+    const auction = new AuctionImpl(
+      0,
+      cargo,
+      owner.id,
+      "2023-02-28",
+      "2023-02-20",
+      500
+    );
+
+    assert.throw(() => auction.endAuction(), Error, "Auction wasn't started");
   });
 });
