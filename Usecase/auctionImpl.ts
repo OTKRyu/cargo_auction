@@ -74,6 +74,23 @@ class AuctionImpl implements Auction {
 
     this.determinedTruckerId =
       this.auctionHistory[this.auctionHistory.length - 1].truckerId;
+
+    this.cargo.truckerId =
+      this.auctionHistory[this.auctionHistory.length - 1].truckerId;
+  }
+
+  startAuction() {
+    if (this.status !== "todo") {
+      throw Error("Auction was already started");
+    }
+    this.status = "progress";
+  }
+
+  endAuction() {
+    if (this.status !== "progress") {
+      throw Error("Auction wasn't started");
+    }
+    this.status = "done";
   }
 }
 

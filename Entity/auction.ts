@@ -14,6 +14,8 @@ interface Auction {
   findMinimumTransportFee(): number;
   addBid(bid: Bid): boolean;
   determineTrucker(): void;
+  startAuction(): void;
+  endAuction(): void;
 }
 
 export default Auction;
