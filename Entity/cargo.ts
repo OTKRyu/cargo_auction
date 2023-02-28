@@ -1,4 +1,4 @@
-class Cargo extends Object {
+class Cargo {
   id: number;
   name: string;
   category: string;
@@ -15,7 +15,6 @@ class Cargo extends Object {
     description: string | undefined,
     ownerId: number
   ) {
-    super();
     this.id = id;
     this.name = name;
     this.category = category;

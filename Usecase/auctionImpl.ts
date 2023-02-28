@@ -2,7 +2,7 @@ import Auction from "../Entity/auction";
 import Bid from "../Entity/bid";
 import Cargo from "../Entity/cargo";
 
-class AuctionImpl extends Object implements Auction {
+class AuctionImpl implements Auction {
   id: number;
   cargo: Cargo;
   ownerId: number;
@@ -21,7 +21,6 @@ class AuctionImpl extends Object implements Auction {
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ) {
-    super();
     this.id = id;
     if (cargo.ownerId !== ownerId) {
       throw new Error("Only cargo owner can create auction about the cargo");

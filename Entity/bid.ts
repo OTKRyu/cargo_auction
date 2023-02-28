@@ -1,4 +1,4 @@
-class Bid extends Object {
+class Bid {
   id: number;
   auctionId: number;
   truckerId: number;
@@ -10,7 +10,6 @@ class Bid extends Object {
     truckerId: number,
     transportFee: number
   ) {
-    super();
     this.id = id;
     this.auctionId = auctionId;
     this.truckerId = truckerId;
