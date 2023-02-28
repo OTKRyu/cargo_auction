@@ -5,6 +5,7 @@ class Cargo {
   transportDueDate: string;
   description: string | undefined;
   ownerId: number;
+  truckerId: number | undefined;
   status: "todo" | "progress" | "arrived";
 
   constructor(
