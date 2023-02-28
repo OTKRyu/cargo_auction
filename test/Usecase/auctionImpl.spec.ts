@@ -1,5 +1,8 @@
 import { expect, assert } from "chai";
-import { Auction, Bid } from "../../Entity/auction";
+
+import Bid from "../../Entity/bid";
+
+import AuctionImpl from "../../Usecase/auctionImpl";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
 
@@ -25,7 +28,7 @@ describe("auction test", () => {
     undefined
   );
   it("auction property test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -45,7 +48,7 @@ describe("auction test", () => {
   });
 
   it("auction method findMinimumBid empty test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -59,7 +62,7 @@ describe("auction test", () => {
   });
 
   it("auction method findMinimumBid add one test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -76,7 +79,7 @@ describe("auction test", () => {
   });
 
   it("auction method findMinimumBid add two test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -95,7 +98,7 @@ describe("auction test", () => {
   });
 
   it("auction method addBid wrong auctionId test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -112,7 +115,7 @@ describe("auction test", () => {
   });
 
   it("auction method addBid empty test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -128,7 +131,7 @@ describe("auction test", () => {
   });
 
   it("auction method addBid wrong transportFee test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -147,7 +150,7 @@ describe("auction test", () => {
   });
 
   it("auction method addBid two bid test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -165,7 +168,7 @@ describe("auction test", () => {
   });
 
   it("auction method determineTrucker status fail test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -190,7 +193,7 @@ describe("auction test", () => {
   });
 
   it("auction method determineTrucker history empty test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,
@@ -209,7 +212,7 @@ describe("auction test", () => {
   });
 
   it("auction method determineTrucker history empty test", () => {
-    const auction = new Auction(
+    const auction = new AuctionImpl(
       0,
       cargo,
       owner.id,

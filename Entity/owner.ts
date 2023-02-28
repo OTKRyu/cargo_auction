@@ -1,6 +1,6 @@
 import Account from "./account";
 import Cargo from "./cargo";
-import { Auction } from "./auction";
+import Auction from "./auction";
 
 interface Owner {
   id: number;

@@ -1,6 +1,6 @@
 import { expect, assert } from "chai";
 
-import { Bid } from "../../Entity/auction";
+import Bid from "../../Entity/bid";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
 

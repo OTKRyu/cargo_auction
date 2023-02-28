@@ -1,7 +1,9 @@
 import Owner from "../Entity/owner";
 import Cargo from "../Entity/cargo";
-import { Auction } from "../Entity/auction";
 import Account from "../Entity/account";
+import Auction from "../Entity/auction";
+
+import AuctionImpl from "./auctionImpl";
 
 class OwnerImpl implements Owner {
   id: number;
@@ -38,7 +40,7 @@ class OwnerImpl implements Owner {
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ) {
-    return new Auction(
+    return new AuctionImpl(
       id,
       cargo,
       this.id,

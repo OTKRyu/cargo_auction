@@ -1,4 +1,5 @@
-import { Auction, Bid } from "./auction";
+import Auction from "./auction";
+import Bid from "./bid";
 import Account from "./account";
 import Cargo from "./cargo";
 
