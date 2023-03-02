@@ -32,12 +32,16 @@ class TruckerImpl implements Trucker {
       return true;
     }
 
+    if (cargo.truckerId === undefined) {
+      throw new Error("This cargo didn't get trucker yet");
+    }
+
     if (cargo.truckerId !== this.id) {
       throw new Error("This cargo isn't yours");
     }
 
     if (cargo.status !== "todo") {
-      throw new Error("Your cargo was already started");
+      throw new Error("Your cargo was already departed");
     }
 
     throw new Error("Bad access to cargo");
