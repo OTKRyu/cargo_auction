@@ -8,7 +8,7 @@ describe("TruckerImpl test", () => {
   const account = new AccountImpl("abc", 100);
   const trucker = new TruckerImpl(0, "trucker", account);
 
-  const ownerAccount = new AccountImpl("abc", 0);
+  const ownerAccount = new AccountImpl("abc", 1000);
   const owner = new OwnerImpl(0, "name", ownerAccount);
   const cargo = owner.createCargo(
     0,
@@ -17,13 +17,7 @@ describe("TruckerImpl test", () => {
     "2023-02-20",
     undefined
   );
-  const auction = owner.createAuction(
-    0,
-    cargo,
-    "2023-02-28",
-    "2023-02-20",
-    500
-  );
+  const auction = owner.createAuction(0, cargo, "2023-02-28", "2023-02-20", 50);
 
   it("TruckerImpl property test", () => {
     expect(trucker.id).to.equal(0);
@@ -46,7 +40,7 @@ describe("TruckerImpl test", () => {
       cargo,
       "2023-02-28",
       "2023-02-20",
-      500
+      50
     );
     const bid = trucker.createBid(localAuction, 0, 100);
     trucker.participateAuction(localAuction, 0, 100);

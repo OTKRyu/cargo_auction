@@ -40,6 +40,10 @@ class OwnerImpl implements Owner {
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ) {
+    if (transportFeeUpperLimit > this.account.balance) {
+      throw Error("Your balance isn't enough for making auction");
+    }
+
     return new AuctionImpl(
       id,
       cargo,

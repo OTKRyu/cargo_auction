@@ -45,7 +45,7 @@ describe("OwnerImpl test", () => {
       cargo,
       "2023-02-28",
       "2023-02-20",
-      500
+      50
     );
 
     expect(auction.id).to.equal(0);
@@ -53,9 +53,19 @@ describe("OwnerImpl test", () => {
     expect(auction.ownerId).to.equal(owner.id);
     expect(auction.auctionExpireDate).to.equal("2023-02-28");
     expect(auction.auctionStartDate).to.equal("2023-02-20");
-    expect(auction.transportFeeUpperLimit).to.equal(500);
+    expect(auction.transportFeeUpperLimit).to.equal(50);
     expect(auction.status).to.equal("todo");
     expect(auction.auctionHistory.length).to.equal(0);
+  });
+
+  it("Owner method createAuction not enough balance test", () => {
+    assert.throw(
+      () => {
+        owner.createAuction(0, cargo, "2023-02-28", "2023-02-20", 500);
+      },
+      Error,
+      "Your balance isn't enough for making auction"
+    );
   });
 
   it("owner method payTransportFee wrong status test", () => {
@@ -65,7 +75,7 @@ describe("OwnerImpl test", () => {
       cargo,
       "2023-02-28",
       "2023-02-20",
-      500
+      50
     );
     assert.throw(
       () => {
@@ -83,7 +93,7 @@ describe("OwnerImpl test", () => {
       cargo,
       "2023-02-28",
       "2023-02-20",
-      500
+      50
     );
     auction.status = "done";
     assert.throw(
@@ -102,7 +112,7 @@ describe("OwnerImpl test", () => {
       cargo,
       "2023-02-28",
       "2023-02-20",
-      500
+      50
     );
     const bid = new Bid(0, 0, 0, 50);
     auction.status = "done";
