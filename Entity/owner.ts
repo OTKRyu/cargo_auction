@@ -1,6 +1,7 @@
 import Account from "./account";
 import Cargo from "./cargo";
 import Auction from "./auction";
+import Trucker from "./trucker";
 
 interface Owner {
   id: number;
@@ -20,7 +21,7 @@ interface Owner {
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ): Auction;
-  payTransportFee(auction: Auction, truckerAccount: Account): boolean;
+  payTransportFee(auction: Auction, trucker: Trucker): boolean;
   changeCargoStatus(cargo: Cargo): boolean;
 }
 

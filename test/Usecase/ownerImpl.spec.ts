@@ -3,6 +3,7 @@ import { expect, assert } from "chai";
 import Bid from "../../Entity/bid";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
+import TruckerImpl from "../../Usecase/truckerImpl";
 
 describe("OwnerImpl test", () => {
   const account = new AccountImpl("abc", 100);
@@ -70,6 +71,7 @@ describe("OwnerImpl test", () => {
 
   it("owner method payTransportFee wrong status test", () => {
     const truckerAccount = new AccountImpl("bcd", 100);
+    const trucker = new TruckerImpl(0, "trucker", truckerAccount);
     const auction = owner.createAuction(
       0,
       cargo,
@@ -79,7 +81,7 @@ describe("OwnerImpl test", () => {
     );
     assert.throw(
       () => {
-        owner.payTransportFee(auction, truckerAccount);
+        owner.payTransportFee(auction, trucker);
       },
       Error,
       "Your auction isn't done yet"
@@ -88,6 +90,7 @@ describe("OwnerImpl test", () => {
 
   it("owner method payTransportFee no trucker test", () => {
     const truckerAccount = new AccountImpl("bcd", 100);
+    const trucker = new TruckerImpl(0, "trucker", truckerAccount);
     const auction = owner.createAuction(
       0,
       cargo,
@@ -98,7 +101,7 @@ describe("OwnerImpl test", () => {
     auction.status = "done";
     assert.throw(
       () => {
-        owner.payTransportFee(auction, truckerAccount);
+        owner.payTransportFee(auction, trucker);
       },
       Error,
       "Your auction doesn't have trucker"
@@ -107,6 +110,7 @@ describe("OwnerImpl test", () => {
 
   it("owner method payTransportFee test", () => {
     const truckerAccount = new AccountImpl("bcd", 100);
+    const trucker = new TruckerImpl(0, "trucker", truckerAccount);
     const auction = owner.createAuction(
       0,
       cargo,
@@ -118,9 +122,9 @@ describe("OwnerImpl test", () => {
     auction.status = "done";
     auction.addBid(bid);
     auction.determineTrucker();
-    expect(owner.payTransportFee(auction, truckerAccount)).to.equal(true);
+    expect(owner.payTransportFee(auction, trucker)).to.equal(true);
     expect(owner.account.balance).to.equal(50);
-    expect(truckerAccount.balance).to.equal(150);
+    expect(trucker.account.balance).to.equal(150);
   });
 
   it("owner method changeCargeStatus test", () => {

@@ -2,6 +2,7 @@ import Owner from "../Entity/owner";
 import Cargo from "../Entity/cargo";
 import Account from "../Entity/account";
 import Auction from "../Entity/auction";
+import Trucker from "../Entity/trucker";
 
 import AuctionImpl from "./auctionImpl";
 
@@ -54,7 +55,7 @@ class OwnerImpl implements Owner {
     );
   }
 
-  payTransportFee(auction: Auction, truckerAccount: Account) {
+  payTransportFee(auction: Auction, trucker: Trucker) {
     if (auction.status !== "done") {
       throw new Error("Your auction isn't done yet");
     }
@@ -67,7 +68,7 @@ class OwnerImpl implements Owner {
     minimumTranportFee = auction.findMinimumTransportFee();
 
     this.account.withdraw(minimumTranportFee);
-    truckerAccount.deposit(minimumTranportFee);
+    trucker.account.deposit(minimumTranportFee);
     return true;
   }
 
