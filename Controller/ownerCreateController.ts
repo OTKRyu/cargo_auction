@@ -4,7 +4,7 @@ import OwnerImpl from "../Usecase/ownerImpl";
 
 import OwnerPermanence from "./ownerPermanence";
 
-class OwnerController {
+class OwnerCreateController {
   ownerPermanence: OwnerPermanence;
 
   constructor(ownerPermanence: OwnerPermanence) {
@@ -18,4 +18,4 @@ class OwnerController {
   }
 }
 
-export default OwnerController;
+export default OwnerCreateController;

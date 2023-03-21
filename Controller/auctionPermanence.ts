@@ -4,8 +4,8 @@ interface AuctionPermanence {
   getAuction(auctionId: number): Auction;
   getAuctions(auctionId: number): Array<Auction>;
   getNewAuctionId(): number;
-  saveAuction(auction: Auction): boolean;
-  fetchAuction(auction: Auction): boolean;
+  saveAuction(auction: Auction): void;
+  fetchAuction(auction: Auction): void;
 }
 
 export default AuctionPermanence;
