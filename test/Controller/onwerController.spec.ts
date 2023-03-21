@@ -17,14 +17,4 @@ describe("OnwerCreateController test", () => {
       ownerPermanenceMock
     );
   });
-
-  it("ownerCreateController method test", () => {
-    const ownerCreateController = new OnwerCreateController(
-      ownerPermanenceMock
-    );
-    const account = new AccountImpl("abc", 100);
-    expect(ownerCreateController.createNewOwner("name", account)).to.equal(
-      true
-    );
-  });
 });

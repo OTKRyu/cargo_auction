@@ -8,7 +8,7 @@ describe("OnwerCreateController test", () => {
   const ownerPermanenceMock = new OwnerPermanenceMock();
   const ownerCreateController = new OnwerCreateController(ownerPermanenceMock);
 
-  it("ownerCreateContoller property test", () => {
+  it("ownerCreateController property test", () => {
     expect(ownerCreateController.ownerPermanence).deep.equal(
       ownerPermanenceMock
     );
