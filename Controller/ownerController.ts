@@ -30,6 +30,22 @@ class OwnerController {
     this.owner = this.ownerPermanence.getOwner(ownerId);
   }
 
+  registerNewCargo(
+    name: string,
+    category: string,
+    transportDueDate: string,
+    description: string | undefined
+  ) {
+    const cargoId = this.cargoPermanence.getNewCargoId();
+    const cargo = this.owner.registerCargo(
+      cargoId,
+      name,
+      category,
+      transportDueDate,
+      description
+    );
+    this.cargoPermanence.saveCargo(cargo);
+  }
   createNewAuction(
     cargoId: number,
     auctionExpireDate: string,
