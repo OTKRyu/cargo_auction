@@ -9,7 +9,7 @@ import AccountImpl from "../../Usecase/accountImpl";
 describe("auction test", () => {
   const account = new AccountImpl("abc", 0);
   const owner = new OwnerImpl(0, "name", account);
-  const cargo = owner.createCargo(
+  const cargo = owner.registerCargo(
     0,
     "cargo",
     "container",
@@ -59,7 +59,7 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid = new Bid(0, 0, 0, 10);
+    const bid = new Bid(0, 0, 10);
 
     auction.addBid(bid);
 
@@ -76,8 +76,8 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid1 = new Bid(0, 0, 0, 10);
-    const bid2 = new Bid(1, 0, 1, 9);
+    const bid1 = new Bid(0, 0, 10);
+    const bid2 = new Bid(0, 1, 9);
 
     auction.addBid(bid1);
     auction.addBid(bid2);
@@ -95,7 +95,7 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid = new Bid(0, 1, 0, 10);
+    const bid = new Bid(1, 0, 10);
     assert.throw(
       () => auction.addBid(bid),
       Error,
@@ -112,7 +112,7 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid = new Bid(0, 0, 0, 10);
+    const bid = new Bid(0, 0, 10);
     const result = auction.addBid(bid);
 
     expect(result).to.equal(true);
@@ -128,8 +128,8 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid1 = new Bid(0, 0, 0, 10);
-    const bid2 = new Bid(1, 0, 1, 11);
+    const bid1 = new Bid(0, 0, 10);
+    const bid2 = new Bid(0, 1, 11);
     auction.addBid(bid1);
     assert.throw(
       () => auction.addBid(bid2),
@@ -147,8 +147,8 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid1 = new Bid(0, 0, 0, 10);
-    const bid2 = new Bid(1, 0, 1, 9);
+    const bid1 = new Bid(0, 0, 10);
+    const bid2 = new Bid(0, 1, 9);
     auction.addBid(bid1);
     const result = auction.addBid(bid2);
 
@@ -193,7 +193,7 @@ describe("auction test", () => {
   });
 
   it("auction method determineTrucker test", () => {
-    const localCargo = owner.createCargo(
+    const localCargo = owner.registerCargo(
       1,
       "cargo",
       "container",
@@ -213,7 +213,7 @@ describe("auction test", () => {
 
     const truckerId = 0;
 
-    const bid = new Bid(0, localAuction.id, truckerId, 10);
+    const bid = new Bid(localAuction.id, truckerId, 10);
     localAuction.addBid(bid);
     localAuction.determineTrucker();
 

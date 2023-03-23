@@ -17,7 +17,7 @@ class OwnerImpl implements Owner {
     this.account = account;
   }
 
-  createCargo(
+  registerCargo(
     id: number,
     name: string,
     category: string,

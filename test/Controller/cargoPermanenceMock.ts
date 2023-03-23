@@ -3,7 +3,7 @@ import Cargo from "../../Entity/cargo";
 import CargoPermanence from "../../Controller/cargoPermanence";
 
 class CargoPermanenceMock implements CargoPermanence {
-  createCargo(cargoId: number) {
+  registerCargo(cargoId: number) {
     const cargo = new Cargo(
       cargoId,
       "cargo",
@@ -15,11 +15,11 @@ class CargoPermanenceMock implements CargoPermanence {
     return cargo;
   }
   getCargo(cargoId: number) {
-    const cargo = this.createCargo(cargoId);
+    const cargo = this.registerCargo(cargoId);
     return cargo;
   }
   getCargos() {
-    const cargo = this.createCargo(0);
+    const cargo = this.registerCargo(0);
     return [cargo];
   }
   getNewCargoId() {

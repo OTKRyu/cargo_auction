@@ -10,7 +10,7 @@ describe("TruckerImpl test", () => {
 
   const ownerAccount = new AccountImpl("abc", 1000);
   const owner = new OwnerImpl(0, "name", ownerAccount);
-  const cargo = owner.createCargo(
+  const cargo = owner.registerCargo(
     0,
     "cargo",
     "container",
@@ -26,9 +26,8 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method createBid test", () => {
-    const bid = trucker.createBid(auction, 0, 100);
+    const bid = trucker.createBid(auction, 100);
 
-    expect(bid.id).to.equal(0);
     expect(bid.auctionId).to.equal(auction.id);
     expect(bid.transportFee).to.equal(100);
     expect(bid.truckerId).to.equal(trucker.id);
@@ -42,14 +41,14 @@ describe("TruckerImpl test", () => {
       "2023-02-20",
       50
     );
-    const bid = trucker.createBid(localAuction, 0, 100);
-    trucker.participateAuction(localAuction, 0, 100);
+    const bid = trucker.createBid(localAuction, 100);
+    trucker.participateAuction(localAuction, 100);
 
     expect(localAuction.auctionHistory).deep.equal([bid]);
   });
 
   it("TruckerImpl method changeCargoStatus test", () => {
-    const localCargo = owner.createCargo(
+    const localCargo = owner.registerCargo(
       1,
       "cargo",
       "container",
@@ -66,7 +65,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus no trucker test", () => {
-    const localCargo = owner.createCargo(
+    const localCargo = owner.registerCargo(
       1,
       "cargo",
       "container",
@@ -84,7 +83,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus wrong trucker test", () => {
-    const localCargo = owner.createCargo(
+    const localCargo = owner.registerCargo(
       1,
       "cargo",
       "container",
@@ -104,7 +103,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus wrong status test", () => {
-    const localCargo = owner.createCargo(
+    const localCargo = owner.registerCargo(
       1,
       "cargo",
       "container",

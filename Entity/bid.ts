@@ -1,16 +1,9 @@
 class Bid {
-  id: number;
   auctionId: number;
   truckerId: number;
   transportFee: number;
 
-  constructor(
-    id: number,
-    auctionId: number,
-    truckerId: number,
-    transportFee: number
-  ) {
-    this.id = id;
+  constructor(auctionId: number, truckerId: number, transportFee: number) {
     this.auctionId = auctionId;
     this.truckerId = truckerId;
     this.transportFee = transportFee;

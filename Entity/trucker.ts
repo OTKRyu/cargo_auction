@@ -6,11 +6,7 @@ interface Trucker {
   id: number;
   userName: string;
   account: Account;
-  participateAuction(
-    auction: Auction,
-    bidId: number,
-    transportFee: number
-  ): boolean;
+  participateAuction(auction: Auction, transportFee: number): boolean;
   changeCargoStatus(cargo: Cargo): boolean;
 }
 

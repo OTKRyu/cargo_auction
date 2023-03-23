@@ -14,15 +14,11 @@ class TruckerImpl implements Trucker {
     this.userName = userName;
     this.account = account;
   }
-  createBid(auction: Auction, bidId: number, transportFee: number) {
-    return new Bid(bidId, auction.id, this.id, transportFee);
+  createBid(auction: Auction, transportFee: number) {
+    return new Bid(auction.id, this.id, transportFee);
   }
-  participateAuction(
-    auction: Auction,
-    bidId: number,
-    transportFee: number
-  ): boolean {
-    const bid = this.createBid(auction, bidId, transportFee);
+  participateAuction(auction: Auction, transportFee: number): boolean {
+    const bid = this.createBid(auction, transportFee);
     auction.addBid(bid);
     return true;
   }

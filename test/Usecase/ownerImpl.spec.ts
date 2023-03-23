@@ -8,7 +8,7 @@ import TruckerImpl from "../../Usecase/truckerImpl";
 describe("OwnerImpl test", () => {
   const account = new AccountImpl("abc", 100);
   const owner = new OwnerImpl(0, "name", account);
-  const cargo = owner.createCargo(
+  const cargo = owner.registerCargo(
     0,
     "cargo",
     "container",
@@ -22,8 +22,8 @@ describe("OwnerImpl test", () => {
     expect(owner.account).deep.equal(account);
   });
 
-  it("OwnerImpl method creatCargo test", () => {
-    const cargo = owner.createCargo(
+  it("OwnerImpl method registerCargo test", () => {
+    const cargo = owner.registerCargo(
       0,
       "cargo",
       "container",
@@ -118,7 +118,7 @@ describe("OwnerImpl test", () => {
       "2023-02-20",
       50
     );
-    const bid = new Bid(0, 0, 0, 50);
+    const bid = new Bid(0, 0, 50);
     auction.status = "done";
     auction.addBid(bid);
     auction.determineTrucker();
@@ -130,7 +130,7 @@ describe("OwnerImpl test", () => {
   it("owner method changeCargeStatus test", () => {
     const localAccount = new AccountImpl("abc", 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
-    const localCargo = localOwner.createCargo(
+    const localCargo = localOwner.registerCargo(
       0,
       "cargo",
       "container",
@@ -148,7 +148,7 @@ describe("OwnerImpl test", () => {
   it("owner method changeCargeStatus wrong owner test", () => {
     const localAccount = new AccountImpl("abc", 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
-    const localCargo = localOwner.createCargo(
+    const localCargo = localOwner.registerCargo(
       0,
       "cargo",
       "container",
@@ -171,7 +171,7 @@ describe("OwnerImpl test", () => {
   it("owner method changeCargeStatus wrong status test", () => {
     const localAccount = new AccountImpl("abc", 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
-    const localCargo = owner.createCargo(
+    const localCargo = owner.registerCargo(
       0,
       "cargo",
       "container",

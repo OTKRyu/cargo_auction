@@ -7,7 +7,7 @@ interface Owner {
   id: number;
   userName: string;
   account: Account;
-  createCargo(
+  registerCargo(
     id: number,
     name: string,
     category: string,
