@@ -17,20 +17,11 @@ describe("TruckerImpl test", () => {
     "2023-02-20",
     undefined
   );
-  const auction = owner.createAuction(0, cargo, "2023-02-28", "2023-02-20", 50);
 
   it("TruckerImpl property test", () => {
     expect(trucker.id).to.equal(0);
     expect(trucker.userName).to.equal("trucker");
     expect(trucker.account).deep.equal(account);
-  });
-
-  it("TruckerImpl method createBid test", () => {
-    const bid = trucker.createBid(auction, 100);
-
-    expect(bid.auctionId).to.equal(auction.id);
-    expect(bid.transportFee).to.equal(100);
-    expect(bid.truckerId).to.equal(trucker.id);
   });
 
   it("TruckerImpl method participateAuction test", () => {
@@ -41,7 +32,10 @@ describe("TruckerImpl test", () => {
       "2023-02-20",
       50
     );
-    const bid = trucker.createBid(localAuction, 100);
+    const bid = {
+      auctionId: localAuction.id,
+      truckerId: trucker.id,
+      transportFee: 100};
     trucker.participateAuction(localAuction, 100);
 
     expect(localAuction.auctionHistory).deep.equal([bid]);

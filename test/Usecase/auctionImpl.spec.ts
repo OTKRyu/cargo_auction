@@ -1,7 +1,5 @@
 import { expect, assert } from "chai";
 
-import Bid from "../../Entity/bid";
-
 import AuctionImpl from "../../Usecase/auctionImpl";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
@@ -59,7 +57,10 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid = new Bid(0, 0, 10);
+    const bid = {
+      auctionId: 0,
+      truckerId: 0,
+      transportFee: 10};
 
     auction.addBid(bid);
 
@@ -76,8 +77,14 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid1 = new Bid(0, 0, 10);
-    const bid2 = new Bid(0, 1, 9);
+    const bid1 = {
+      auctionId: 0,
+      truckerId: 0,
+      transportFee: 10};
+    const bid2 = {
+      auctionId: 0,
+      truckerId: 1,
+      transportFee: 9};
 
     auction.addBid(bid1);
     auction.addBid(bid2);
@@ -95,7 +102,10 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid = new Bid(1, 0, 10);
+    const bid = {
+      auctionId: 1,
+      truckerId: 0,
+      transportFee: 10}
     assert.throw(
       () => auction.addBid(bid),
       Error,
@@ -112,7 +122,10 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid = new Bid(0, 0, 10);
+    const bid = {
+      auctionId: 0,
+      truckerId: 0,
+      transportFee: 10};
     const result = auction.addBid(bid);
 
     expect(result).to.equal(true);
@@ -128,8 +141,14 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid1 = new Bid(0, 0, 10);
-    const bid2 = new Bid(0, 1, 11);
+    const bid1 = {
+      auctionId: 0,
+      truckerId:  0,
+      transportFee: 10};
+    const bid2 = {
+      auctionId: 0,
+      truckerId: 1,
+      transportFee: 11};
     auction.addBid(bid1);
     assert.throw(
       () => auction.addBid(bid2),
@@ -147,8 +166,14 @@ describe("auction test", () => {
       "2023-02-20",
       500
     );
-    const bid1 = new Bid(0, 0, 10);
-    const bid2 = new Bid(0, 1, 9);
+    const bid1 = {
+      auctionId: 0,
+      truckerId: 0,
+      transportFee: 10};
+    const bid2 = {
+      auctionId: 0,
+      truckerId: 1,
+      transportFee: 9};
     auction.addBid(bid1);
     const result = auction.addBid(bid2);
 
@@ -213,7 +238,10 @@ describe("auction test", () => {
 
     const truckerId = 0;
 
-    const bid = new Bid(localAuction.id, truckerId, 10);
+    const bid = {
+      auctionId: localAuction.id,
+      truckerId: truckerId,
+      transportFee:  10};
     localAuction.addBid(bid);
     localAuction.determineTrucker();
 
