@@ -7,6 +7,7 @@ interface Trucker {
   userName: string;
   account: Account;
   participateAuction(auction: Auction, transportFee: number): boolean;
+  eraseLatestAuctionBid(auction: Auction): boolean;
   changeCargoStatus(cargo: Cargo): boolean;
 }
 

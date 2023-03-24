@@ -41,6 +41,60 @@ describe("TruckerImpl test", () => {
     expect(localAuction.auctionHistory).deep.equal([bid]);
   });
 
+  it("TruckerImpl method eraseLastestAuctionBid test", () => {
+    const localAuction = owner.createAuction(
+      1,
+      cargo,
+      "2023-02-28",
+      "2023-02-20",
+      50
+    );
+
+    trucker.participateAuction(localAuction, 100);
+    trucker.eraseLatestAuctionBid(localAuction)
+    expect(localAuction.auctionHistory.length).to.equal(0)
+  });
+
+  it("TruckerImpl method eraseLastestAuctionBid no history test", () => {
+    const localAuction = owner.createAuction(
+      1,
+      cargo,
+      "2023-02-28",
+      "2023-02-20",
+      50
+    );
+    
+    assert.throw(
+      () => {
+        trucker.eraseLatestAuctionBid(localAuction);
+      },
+      Error,
+      "Auction doesn't have bids"
+    );
+  });
+
+  it("TruckerImpl method eraseLastestAuctionBid other trucker try test", () => {
+    const localAuction = owner.createAuction(
+      1,
+      cargo,
+      "2023-02-28",
+      "2023-02-20",
+      50
+    );
+    const account = new AccountImpl("bcd", 100);
+    const localTrucker = new TruckerImpl(1, "trucker", account);
+
+    trucker.participateAuction(localAuction, 100);
+    
+    assert.throw(
+      () => {
+        localTrucker.eraseLatestAuctionBid(localAuction);
+      },
+      Error,
+      "You can erase your bid only when your bid is latest one"
+    );
+  });
+
   it("TruckerImpl method changeCargoStatus test", () => {
     const localCargo = owner.registerCargo(
       1,
