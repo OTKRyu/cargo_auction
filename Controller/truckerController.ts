@@ -26,12 +26,15 @@ class TruckerController {
     const auction = this.temporalPermanence.getActiveAuction(auctionId);
     this.trucker.participateAuction(auction, transportFee);
     this.temporalPermanence.fetchAuction(auction);
+    return auction;
   }
 
   changeCargoStatus(cargoId: number) {
     const cargo = this.cargoPermanence.getCargo(cargoId);
     this.trucker.changeCargoStatus(cargo);
     this.cargoPermanence.fetchCargo(cargo);
+    return cargo;
   }
 }
+
 export default TruckerController;

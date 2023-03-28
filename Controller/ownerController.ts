@@ -45,6 +45,7 @@ class OwnerController {
       description
     );
     this.cargoPermanence.saveCargo(cargo);
+    return cargo;
   }
   createNewAuction(
     cargoId: number,
@@ -64,6 +65,7 @@ class OwnerController {
     );
 
     this.auctionPermanence.saveAuction(auction);
+    return auction;
   }
 
   payTransportFee(auctionId: number, truckerId: number) {
@@ -74,6 +76,7 @@ class OwnerController {
 
     this.ownerPermanence.saveOwner(this.owner);
     this.truckerPermanence.saveTrucker(trucker);
+    return this.owner;
   }
 
   changeCargoStatus(cargoId: number) {
@@ -82,6 +85,7 @@ class OwnerController {
     this.owner.changeCargoStatus(cargo);
 
     this.cargoPermanence.saveCargo(cargo);
+    return cargo;
   }
 }
 

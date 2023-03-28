@@ -15,6 +15,7 @@ class OwnerCreateController {
     const ownerId = this.ownerPermanence.getNewOwnerId();
     const owner = new OwnerImpl(ownerId, userName, account);
     this.ownerPermanence.saveOwner(owner);
+    return owner;
   }
 }
 
