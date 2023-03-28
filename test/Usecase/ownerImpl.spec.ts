@@ -1,6 +1,5 @@
 import { expect, assert } from "chai";
 
-import Bid from "../../Entity/bid";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
 import TruckerImpl from "../../Usecase/truckerImpl";
@@ -118,7 +117,10 @@ describe("OwnerImpl test", () => {
       "2023-02-20",
       50
     );
-    const bid = new Bid(0, 0, 50);
+    const bid = {
+      auctionId: 0,
+      truckerId: 0,
+      transportFee: 50};
     auction.status = "done";
     auction.addBid(bid);
     auction.determineTrucker();

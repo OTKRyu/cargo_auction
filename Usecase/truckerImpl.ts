@@ -1,6 +1,5 @@
 import Trucker from "../Entity/trucker";
 import Account from "../Entity/account";
-import Bid from "../Entity/bid";
 import Auction from "../Entity/auction";
 import Cargo from "../Entity/cargo";
 
@@ -14,13 +13,26 @@ class TruckerImpl implements Trucker {
     this.userName = userName;
     this.account = account;
   }
-  createBid(auction: Auction, transportFee: number) {
-    return new Bid(auction.id, this.id, transportFee);
-  }
   participateAuction(auction: Auction, transportFee: number): boolean {
-    const bid = this.createBid(auction, transportFee);
+    const bid = {
+      auctionId: auction.id,
+      truckerId: this.id,
+      transportFee: transportFee
+    };
     auction.addBid(bid);
     return true;
+  }
+  eraseLatestAuctionBid(auction: Auction): boolean {
+    if (auction.auctionHistory.length == 0) {
+      throw Error("Auction doesn't have bids")
+    }
+
+    if (auction.auctionHistory[auction.auctionHistory.length - 1].truckerId !== this.id) {
+      throw Error("You can erase your bid only when your bid is latest one")
+    }
+
+    auction.auctionHistory.pop()
+    return true
   }
   changeCargoStatus(cargo: Cargo): boolean {
     if (cargo.truckerId === this.id && cargo.status === "todo") {
