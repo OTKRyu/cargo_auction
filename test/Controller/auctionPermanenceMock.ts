@@ -33,7 +33,11 @@ class AuctionPermanenceMock implements AuctionPermanence {
     const auction = this.createAuction(auctionId);
     return auction;
   }
-  getAuctions(auctionId: number): Auction[] {
+  getAuctions() {
+    const auction = this.createAuction(0);
+    return [auction];
+  }
+  getStartSoonAuctions() {
     const auction = this.createAuction(0);
     return [auction];
   }

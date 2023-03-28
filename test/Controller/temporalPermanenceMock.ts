@@ -37,7 +37,17 @@ class TemporalPermanenceMock implements TemporalPermanence {
     const auction = this.createAuction(0);
     return [auction];
   }
+  getCloseSoonAuctions() {
+    const auction = this.createAuction(0);
+    return [auction];
+  }
   fetchAuction(auction: Auction) {
+    return;
+  }
+  removeAuction(auction: Auction) {
+    return;
+  }
+  registerAuction(auction: Auction): void {
     return;
   }
 }
