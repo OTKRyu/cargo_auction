@@ -6,6 +6,7 @@ interface TemporalPermanence {
   getCloseSoonAuctions(): Array<Auction>;
   fetchAuction(auction: Auction): void;
   registerAuction(auction: Auction): void;
+  removeAuction(auction: Auction): void;
 }
 
 export default TemporalPermanence;

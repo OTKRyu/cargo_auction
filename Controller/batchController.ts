@@ -16,7 +16,9 @@ class BatchController {
   activateAuctions() {
     const auctions = this.auctionPermanence.getStartSoonAuctions();
     auctions.forEach((auction) => {
+      auction.startAuction();
       this.temporalPermanence.registerAuction(auction);
+      this.auctionPermanence.fetchAuction(auction);
     });
     return auctions;
   }
@@ -24,7 +26,9 @@ class BatchController {
   closeAuctions() {
     const auctions = this.temporalPermanence.getCloseSoonAuctions();
     auctions.forEach((auction) => {
+      auction.endAuction();
       this.auctionPermanence.fetchAuction(auction);
+      this.temporalPermanence.removeAuction(auction);
     });
   }
 }
