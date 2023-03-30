@@ -4,9 +4,9 @@ import AccountImpl from "../../Usecase/accountImpl";
 import OwnerImpl from "../../Usecase/ownerImpl";
 import AuctionImpl from "../../Usecase/auctionImpl";
 
-import TemporalPermanence from "../../Controller/temporalPermanence";
+import TmporalAuctionPermanence from "../../Controller/temporalAuctionPermanence";
 
-class TemporalPermanenceMock implements TemporalPermanence {
+class TmporalAuctionPermanenceMock implements TmporalAuctionPermanence {
   createAuction(auctionId: number) {
     const account = new AccountImpl(0, 0);
     const owner = new OwnerImpl(0, "name", account);
@@ -46,4 +46,4 @@ class TemporalPermanenceMock implements TemporalPermanence {
   }
 }
 
-export default TemporalPermanenceMock;
+export default TmporalAuctionPermanenceMock;

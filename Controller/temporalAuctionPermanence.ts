@@ -1,6 +1,6 @@
 import Auction from "../Entity/auction";
 
-interface TemporalPermanence {
+interface TemporalAuctionPermanence {
   getActiveAuctions(): Array<Auction>;
   getActiveAuction(auctionId: number): Auction;
   getCloseSoonAuctions(): Array<Auction>;
@@ -9,4 +9,4 @@ interface TemporalPermanence {
   removeAuction(auction: Auction): void;
 }
 
-export default TemporalPermanence;
+export default TemporalAuctionPermanence;

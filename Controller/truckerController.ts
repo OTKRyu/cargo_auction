@@ -1,31 +1,31 @@
 import Trucker from "../Entity/trucker";
 
-import TemporalPermanence from "./temporalPermanence";
+import TmporalAuctionPermanence from "./temporalAuctionPermanence";
 import CargoPermanence from "./cargoPermanence";
 import TruckerPermanence from "./truckerPermanence";
 
 class TruckerController {
-  temporalPermanence: TemporalPermanence;
+  tmporalAuctionPermanence: TmporalAuctionPermanence;
   cargoPermanence: CargoPermanence;
   truckerPermanence: TruckerPermanence;
   trucker: Trucker;
 
   constructor(
-    temporalPermanence: TemporalPermanence,
+    tmporalAuctionPermanence: TmporalAuctionPermanence,
     cargoPermanence: CargoPermanence,
     truckerPermanence: TruckerPermanence,
     truckerId: number
   ) {
-    this.temporalPermanence = temporalPermanence;
+    this.tmporalAuctionPermanence = tmporalAuctionPermanence;
     this.cargoPermanence = cargoPermanence;
     this.truckerPermanence = truckerPermanence;
     this.trucker = this.truckerPermanence.getTrucker(truckerId);
   }
 
   participateAuction(auctionId: number, transportFee: number) {
-    const auction = this.temporalPermanence.getActiveAuction(auctionId);
+    const auction = this.tmporalAuctionPermanence.getActiveAuction(auctionId);
     this.trucker.participateAuction(auction, transportFee);
-    this.temporalPermanence.fetchAuction(auction);
+    this.tmporalAuctionPermanence.fetchAuction(auction);
     return auction;
   }
 

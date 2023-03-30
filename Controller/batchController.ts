@@ -1,15 +1,15 @@
-import TemporalPermanence from "./temporalPermanence";
+import TmporalAuctionPermanence from "./temporalAuctionPermanence";
 import AuctionPermanence from "./auctionPermanence";
 
 class BatchController {
-  temporalPermanence: TemporalPermanence;
+  tmporalAuctionPermanence: TmporalAuctionPermanence;
   auctionPermanence: AuctionPermanence;
 
   constructor(
-    temporalPermanence: TemporalPermanence,
+    tmporalAuctionPermanence: TmporalAuctionPermanence,
     auctionPermanence: AuctionPermanence
   ) {
-    this.temporalPermanence = temporalPermanence;
+    this.tmporalAuctionPermanence = tmporalAuctionPermanence;
     this.auctionPermanence = auctionPermanence;
   }
 
@@ -17,18 +17,18 @@ class BatchController {
     const auctions = this.auctionPermanence.getStartSoonAuctions();
     auctions.forEach((auction) => {
       auction.startAuction();
-      this.temporalPermanence.registerAuction(auction);
+      this.tmporalAuctionPermanence.registerAuction(auction);
       this.auctionPermanence.fetchAuction(auction);
     });
     return auctions;
   }
 
   closeAuctions() {
-    const auctions = this.temporalPermanence.getCloseSoonAuctions();
+    const auctions = this.tmporalAuctionPermanence.getCloseSoonAuctions();
     auctions.forEach((auction) => {
       auction.endAuction();
       this.auctionPermanence.fetchAuction(auction);
-      this.temporalPermanence.removeAuction(auction);
+      this.tmporalAuctionPermanence.removeAuction(auction);
     });
   }
 }
