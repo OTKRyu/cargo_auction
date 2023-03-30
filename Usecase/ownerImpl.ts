@@ -20,18 +20,10 @@ class OwnerImpl implements Owner {
   registerCargo(
     id: number,
     name: string,
-    category: string,
     transportDueDate: string,
     description: string | undefined
   ) {
-    return new Cargo(
-      id,
-      name,
-      category,
-      transportDueDate,
-      description,
-      this.id
-    );
+    return new Cargo(id, name, transportDueDate, description, this.id);
   }
 
   createAuction(

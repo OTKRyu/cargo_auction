@@ -32,7 +32,6 @@ class OwnerController {
 
   registerNewCargo(
     name: string,
-    category: string,
     transportDueDate: string,
     description: string | undefined
   ) {
@@ -40,7 +39,6 @@ class OwnerController {
     const cargo = this.owner.registerCargo(
       cargoId,
       name,
-      category,
       transportDueDate,
       description
     );

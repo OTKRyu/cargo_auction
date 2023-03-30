@@ -7,13 +7,7 @@ import AccountImpl from "../../Usecase/accountImpl";
 describe("auction test", () => {
   const account = new AccountImpl("abc", 0);
   const owner = new OwnerImpl(0, "name", account);
-  const cargo = owner.registerCargo(
-    0,
-    "cargo",
-    "container",
-    "2023-02-20",
-    undefined
-  );
+  const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
   it("auction property test", () => {
     const auction = new AuctionImpl(
       0,
@@ -60,7 +54,8 @@ describe("auction test", () => {
     const bid = {
       auctionId: 0,
       truckerId: 0,
-      transportFee: 10};
+      transportFee: 10,
+    };
 
     auction.addBid(bid);
 
@@ -80,11 +75,13 @@ describe("auction test", () => {
     const bid1 = {
       auctionId: 0,
       truckerId: 0,
-      transportFee: 10};
+      transportFee: 10,
+    };
     const bid2 = {
       auctionId: 0,
       truckerId: 1,
-      transportFee: 9};
+      transportFee: 9,
+    };
 
     auction.addBid(bid1);
     auction.addBid(bid2);
@@ -105,7 +102,8 @@ describe("auction test", () => {
     const bid = {
       auctionId: 1,
       truckerId: 0,
-      transportFee: 10}
+      transportFee: 10,
+    };
     assert.throw(
       () => auction.addBid(bid),
       Error,
@@ -125,7 +123,8 @@ describe("auction test", () => {
     const bid = {
       auctionId: 0,
       truckerId: 0,
-      transportFee: 10};
+      transportFee: 10,
+    };
     const result = auction.addBid(bid);
 
     expect(result).to.equal(true);
@@ -143,12 +142,14 @@ describe("auction test", () => {
     );
     const bid1 = {
       auctionId: 0,
-      truckerId:  0,
-      transportFee: 10};
+      truckerId: 0,
+      transportFee: 10,
+    };
     const bid2 = {
       auctionId: 0,
       truckerId: 1,
-      transportFee: 11};
+      transportFee: 11,
+    };
     auction.addBid(bid1);
     assert.throw(
       () => auction.addBid(bid2),
@@ -169,11 +170,13 @@ describe("auction test", () => {
     const bid1 = {
       auctionId: 0,
       truckerId: 0,
-      transportFee: 10};
+      transportFee: 10,
+    };
     const bid2 = {
       auctionId: 0,
       truckerId: 1,
-      transportFee: 9};
+      transportFee: 9,
+    };
     auction.addBid(bid1);
     const result = auction.addBid(bid2);
 
@@ -218,13 +221,7 @@ describe("auction test", () => {
   });
 
   it("auction method determineTrucker test", () => {
-    const localCargo = owner.registerCargo(
-      1,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
     const localAuction = new AuctionImpl(
       1,
       localCargo,
@@ -241,7 +238,8 @@ describe("auction test", () => {
     const bid = {
       auctionId: localAuction.id,
       truckerId: truckerId,
-      transportFee:  10};
+      transportFee: 10,
+    };
     localAuction.addBid(bid);
     localAuction.determineTrucker();
 

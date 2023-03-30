@@ -1,7 +1,6 @@
 class Cargo {
   id: number;
   name: string;
-  category: string;
   transportDueDate: string;
   description: string | undefined;
   ownerId: number;
@@ -11,14 +10,12 @@ class Cargo {
   constructor(
     id: number,
     name: string,
-    category: string,
     transportDueDate: string,
     description: string | undefined,
     ownerId: number
   ) {
     this.id = id;
     this.name = name;
-    this.category = category;
     this.transportDueDate = transportDueDate;
     this.description = description;
     this.ownerId = ownerId;

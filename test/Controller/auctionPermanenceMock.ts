@@ -10,13 +10,7 @@ class AuctionPermanenceMock implements AuctionPermanence {
   createAuction(auctionId: number) {
     const account = new AccountImpl("abc", 0);
     const owner = new OwnerImpl(0, "name", account);
-    const cargo = owner.registerCargo(
-      0,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
     const auction = new AuctionImpl(
       auctionId,
       cargo,

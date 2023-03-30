@@ -10,7 +10,6 @@ interface Owner {
   registerCargo(
     id: number,
     name: string,
-    category: string,
     transportDueDate: string,
     description: string | undefined
   ): Cargo;

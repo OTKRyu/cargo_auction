@@ -4,14 +4,7 @@ import CargoPermanence from "../../Controller/cargoPermanence";
 
 class CargoPermanenceMock implements CargoPermanence {
   registerCargo(cargoId: number) {
-    const cargo = new Cargo(
-      cargoId,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined,
-      0
-    );
+    const cargo = new Cargo(cargoId, "cargo", "2023-02-20", undefined, 0);
     return cargo;
   }
   getCargo(cargoId: number) {

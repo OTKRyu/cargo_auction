@@ -10,13 +10,7 @@ describe("TruckerImpl test", () => {
 
   const ownerAccount = new AccountImpl("abc", 1000);
   const owner = new OwnerImpl(0, "name", ownerAccount);
-  const cargo = owner.registerCargo(
-    0,
-    "cargo",
-    "container",
-    "2023-02-20",
-    undefined
-  );
+  const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
   it("TruckerImpl property test", () => {
     expect(trucker.id).to.equal(0);
@@ -35,7 +29,8 @@ describe("TruckerImpl test", () => {
     const bid = {
       auctionId: localAuction.id,
       truckerId: trucker.id,
-      transportFee: 100};
+      transportFee: 100,
+    };
     trucker.participateAuction(localAuction, 100);
 
     expect(localAuction.auctionHistory).deep.equal([bid]);
@@ -51,8 +46,8 @@ describe("TruckerImpl test", () => {
     );
 
     trucker.participateAuction(localAuction, 100);
-    trucker.eraseLatestAuctionBid(localAuction)
-    expect(localAuction.auctionHistory.length).to.equal(0)
+    trucker.eraseLatestAuctionBid(localAuction);
+    expect(localAuction.auctionHistory.length).to.equal(0);
   });
 
   it("TruckerImpl method eraseLastestAuctionBid no history test", () => {
@@ -63,7 +58,7 @@ describe("TruckerImpl test", () => {
       "2023-02-20",
       50
     );
-    
+
     assert.throw(
       () => {
         trucker.eraseLatestAuctionBid(localAuction);
@@ -85,7 +80,7 @@ describe("TruckerImpl test", () => {
     const localTrucker = new TruckerImpl(1, "trucker", account);
 
     trucker.participateAuction(localAuction, 100);
-    
+
     assert.throw(
       () => {
         localTrucker.eraseLatestAuctionBid(localAuction);
@@ -96,13 +91,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus test", () => {
-    const localCargo = owner.registerCargo(
-      1,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
     localCargo.truckerId = 0;
 
@@ -113,13 +102,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus no trucker test", () => {
-    const localCargo = owner.registerCargo(
-      1,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
     assert.throw(
       () => {
@@ -131,13 +114,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus wrong trucker test", () => {
-    const localCargo = owner.registerCargo(
-      1,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
     localCargo.truckerId = 1;
 
@@ -151,13 +128,7 @@ describe("TruckerImpl test", () => {
   });
 
   it("TruckerImpl method changeCargoStatus wrong status test", () => {
-    const localCargo = owner.registerCargo(
-      1,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
     localCargo.truckerId = 0;
     localCargo.status = "progress";

@@ -7,13 +7,7 @@ import TruckerImpl from "../../Usecase/truckerImpl";
 describe("OwnerImpl test", () => {
   const account = new AccountImpl("abc", 100);
   const owner = new OwnerImpl(0, "name", account);
-  const cargo = owner.registerCargo(
-    0,
-    "cargo",
-    "container",
-    "2023-02-20",
-    undefined
-  );
+  const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
   it("OwnerImpl property test", () => {
     expect(owner.id).to.equal(0);
@@ -22,17 +16,10 @@ describe("OwnerImpl test", () => {
   });
 
   it("OwnerImpl method registerCargo test", () => {
-    const cargo = owner.registerCargo(
-      0,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
     expect(cargo.id).to.equal(0);
     expect(cargo.name).to.equal("cargo");
-    expect(cargo.category).to.equal("container");
     expect(cargo.transportDueDate).to.equal("2023-02-20");
     expect(cargo.description).to.equal(undefined);
     expect(cargo.ownerId).to.equal(owner.id);
@@ -120,7 +107,8 @@ describe("OwnerImpl test", () => {
     const bid = {
       auctionId: 0,
       truckerId: 0,
-      transportFee: 50};
+      transportFee: 50,
+    };
     auction.status = "done";
     auction.addBid(bid);
     auction.determineTrucker();
@@ -135,7 +123,6 @@ describe("OwnerImpl test", () => {
     const localCargo = localOwner.registerCargo(
       0,
       "cargo",
-      "container",
       "2023-02-20",
       undefined
     );
@@ -153,7 +140,6 @@ describe("OwnerImpl test", () => {
     const localCargo = localOwner.registerCargo(
       0,
       "cargo",
-      "container",
       "2023-02-20",
       undefined
     );
@@ -173,13 +159,7 @@ describe("OwnerImpl test", () => {
   it("owner method changeCargeStatus wrong status test", () => {
     const localAccount = new AccountImpl("abc", 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
-    const localCargo = owner.registerCargo(
-      0,
-      "cargo",
-      "container",
-      "2023-02-20",
-      undefined
-    );
+    const localCargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
     assert.throw(
       () => localOwner.changeCargoStatus(localCargo),
