@@ -1,0 +1,9 @@
+CREATE TABLE CARGO (
+  ID int,
+  CARGO_NAME varchar(255),
+  TRANSPORT_DUE_DATE date,
+  CARGO_DESCRIPTION text,
+  OWNER_ID int,
+  TRUCKER_ID int,
+  CARGO_STATUS varchar(255)
+)

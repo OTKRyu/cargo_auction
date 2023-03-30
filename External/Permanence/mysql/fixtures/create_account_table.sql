@@ -1,0 +1,4 @@
+CREATE TABLE ACCOUNT (
+  ACCOUNT_ID int,
+  BALANCE int,
+)

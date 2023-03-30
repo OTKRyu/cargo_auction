@@ -1,0 +1,5 @@
+CREATE TABLE TRUCKER (
+  ID int,
+  USER_NAME varchar(255),
+  ACCOUNT_ID int
+)
