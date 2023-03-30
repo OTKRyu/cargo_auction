@@ -5,7 +5,7 @@ import OwnerImpl from "../../Usecase/ownerImpl";
 import AccountImpl from "../../Usecase/accountImpl";
 
 describe("auction test", () => {
-  const account = new AccountImpl("abc", 0);
+  const account = new AccountImpl(0, 0);
   const owner = new OwnerImpl(0, "name", account);
   const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
   it("auction property test", () => {

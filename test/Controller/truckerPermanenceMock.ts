@@ -7,7 +7,7 @@ import TruckerPermanence from "../../Controller/truckerPermanence";
 
 class TruckerPermanenceMock implements TruckerPermanence {
   createTrucker(truckerId: number) {
-    const account = new AccountImpl("abc", 100);
+    const account = new AccountImpl(0, 100);
     const trucker = new TruckerImpl(truckerId, "trucker", account);
     return trucker;
   }

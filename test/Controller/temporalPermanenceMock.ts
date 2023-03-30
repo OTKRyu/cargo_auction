@@ -8,7 +8,7 @@ import TemporalPermanence from "../../Controller/temporalPermanence";
 
 class TemporalPermanenceMock implements TemporalPermanence {
   createAuction(auctionId: number) {
-    const account = new AccountImpl("abc", 0);
+    const account = new AccountImpl(0, 0);
     const owner = new OwnerImpl(0, "name", account);
     const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
     const auction = new AuctionImpl(

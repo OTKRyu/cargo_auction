@@ -5,7 +5,7 @@ import AccountImpl from "../../Usecase/accountImpl";
 import TruckerImpl from "../../Usecase/truckerImpl";
 
 describe("OwnerImpl test", () => {
-  const account = new AccountImpl("abc", 100);
+  const account = new AccountImpl(0, 100);
   const owner = new OwnerImpl(0, "name", account);
   const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
@@ -56,7 +56,7 @@ describe("OwnerImpl test", () => {
   });
 
   it("owner method payTransportFee wrong status test", () => {
-    const truckerAccount = new AccountImpl("bcd", 100);
+    const truckerAccount = new AccountImpl(1, 100);
     const trucker = new TruckerImpl(0, "trucker", truckerAccount);
     const auction = owner.createAuction(
       0,
@@ -75,7 +75,7 @@ describe("OwnerImpl test", () => {
   });
 
   it("owner method payTransportFee no trucker test", () => {
-    const truckerAccount = new AccountImpl("bcd", 100);
+    const truckerAccount = new AccountImpl(1, 100);
     const trucker = new TruckerImpl(0, "trucker", truckerAccount);
     const auction = owner.createAuction(
       0,
@@ -95,7 +95,7 @@ describe("OwnerImpl test", () => {
   });
 
   it("owner method payTransportFee test", () => {
-    const truckerAccount = new AccountImpl("bcd", 100);
+    const truckerAccount = new AccountImpl(1, 100);
     const trucker = new TruckerImpl(0, "trucker", truckerAccount);
     const auction = owner.createAuction(
       0,
@@ -118,7 +118,7 @@ describe("OwnerImpl test", () => {
   });
 
   it("owner method changeCargeStatus test", () => {
-    const localAccount = new AccountImpl("abc", 100);
+    const localAccount = new AccountImpl(0, 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
     const localCargo = localOwner.registerCargo(
       0,
@@ -135,7 +135,7 @@ describe("OwnerImpl test", () => {
   });
 
   it("owner method changeCargeStatus wrong owner test", () => {
-    const localAccount = new AccountImpl("abc", 100);
+    const localAccount = new AccountImpl(0, 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
     const localCargo = localOwner.registerCargo(
       0,
@@ -146,7 +146,7 @@ describe("OwnerImpl test", () => {
 
     localCargo.status = "progress";
 
-    const otherAccount = new AccountImpl("bcd", 100);
+    const otherAccount = new AccountImpl(1, 100);
     const otherOwner = new OwnerImpl(1, "other neme", otherAccount);
 
     assert.throw(
@@ -157,7 +157,7 @@ describe("OwnerImpl test", () => {
   });
 
   it("owner method changeCargeStatus wrong status test", () => {
-    const localAccount = new AccountImpl("abc", 100);
+    const localAccount = new AccountImpl(0, 100);
     const localOwner = new OwnerImpl(0, "name", localAccount);
     const localCargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 

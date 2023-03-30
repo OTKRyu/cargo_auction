@@ -7,12 +7,12 @@ import OwnerPermanence from "../../Controller/ownerPermanence";
 
 class OwnerPermanenceMock implements OwnerPermanence {
   getOwner(ownerId: number) {
-    const account = new AccountImpl("abc", 100);
+    const account = new AccountImpl(0, 100);
     const owner = new OwnerImpl(ownerId, "name", account);
     return owner;
   }
   getOwners(ownerId: number) {
-    const account = new AccountImpl("abc", 100);
+    const account = new AccountImpl(0, 100);
     const owner = new OwnerImpl(ownerId, "name", account);
     return [owner];
   }

@@ -3,25 +3,25 @@ import AccountImpl from "../../Usecase/accountImpl";
 
 describe("AccountImpl test", () => {
   it("accountImpl property test", () => {
-    const account = new AccountImpl("abc", 10);
-    expect(account.id).to.equal("abc");
+    const account = new AccountImpl(0, 10);
+    expect(account.id).to.equal(0);
     expect(account.balance).to.equal(10);
   });
 
   it("accountImpl method deposit test", () => {
-    const account = new AccountImpl("abc", 10);
+    const account = new AccountImpl(0, 10);
     account.deposit(5);
     expect(account.balance).to.equal(15);
   });
 
   it("accountImpl method withdraw test with enough balance", () => {
-    const account = new AccountImpl("abc", 10);
+    const account = new AccountImpl(0, 10);
     account.withdraw(7);
     expect(account.balance).to.equal(3);
   });
 
   it("accountImpl method withdraw test with not enough balance", () => {
-    const account = new AccountImpl("abc", 10);
+    const account = new AccountImpl(0, 10);
     assert.throw(
       () => {
         account.withdraw(11);

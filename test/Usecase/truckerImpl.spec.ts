@@ -5,10 +5,10 @@ import AccountImpl from "../../Usecase/accountImpl";
 import TruckerImpl from "../../Usecase/truckerImpl";
 
 describe("TruckerImpl test", () => {
-  const account = new AccountImpl("abc", 100);
+  const account = new AccountImpl(0, 100);
   const trucker = new TruckerImpl(0, "trucker", account);
 
-  const ownerAccount = new AccountImpl("abc", 1000);
+  const ownerAccount = new AccountImpl(0, 1000);
   const owner = new OwnerImpl(0, "name", ownerAccount);
   const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
@@ -76,7 +76,7 @@ describe("TruckerImpl test", () => {
       "2023-02-20",
       50
     );
-    const account = new AccountImpl("bcd", 100);
+    const account = new AccountImpl(1, 100);
     const localTrucker = new TruckerImpl(1, "trucker", account);
 
     trucker.participateAuction(localAuction, 100);

@@ -1,6 +1,6 @@
 interface Account {
   balance: number;
-  id: string;
+  id: number;
   deposit(amount: number): void;
   withdraw(amount: number): void;
 }
