@@ -69,7 +69,7 @@ class AuctionImpl implements Auction {
     }
 
     if (this.auctionHistory.length === 0) {
-      throw new Error("Nobody participate this auction");
+      return;
     }
 
     this.determinedTruckerId =
@@ -91,6 +91,7 @@ class AuctionImpl implements Auction {
       throw Error("Auction wasn't started");
     }
     this.status = "done";
+    this.determineTrucker();
   }
 }
 

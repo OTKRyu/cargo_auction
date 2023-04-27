@@ -213,16 +213,13 @@ describe("auction test", () => {
 
     auction.status = "done";
 
-    assert.throw(
-      () => auction.determineTrucker(),
-      Error,
-      "Nobody participate this auction"
-    );
+    expect(auction.determinedTruckerId).to.equal(undefined);
+    expect(auction.cargo.truckerId).to.equal(undefined);
   });
 
   it("auction method determineTrucker test", () => {
     const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
-    const localAuction = new AuctionImpl(
+    const auction = new AuctionImpl(
       1,
       localCargo,
       owner.id,
@@ -231,20 +228,20 @@ describe("auction test", () => {
       500
     );
 
-    localAuction.status = "done";
+    auction.status = "done";
 
     const truckerId = 0;
 
     const bid = {
-      auctionId: localAuction.id,
+      auctionId: auction.id,
       truckerId: truckerId,
       transportFee: 10,
     };
-    localAuction.addBid(bid);
-    localAuction.determineTrucker();
+    auction.addBid(bid);
+    auction.determineTrucker();
 
-    expect(localAuction.determinedTruckerId).to.equal(truckerId);
-    expect(localAuction.cargo.truckerId).to.equal(truckerId);
+    expect(auction.determinedTruckerId).to.equal(truckerId);
+    expect(auction.cargo.truckerId).to.equal(truckerId);
   });
 
   it("auction method startAuction test", () => {
@@ -292,6 +289,14 @@ describe("auction test", () => {
     );
 
     auction.status = "progress";
+
+    const bid = {
+      auctionId: 0,
+      truckerId: 0,
+      transportFee: 10,
+    };
+
+    auction.addBid(bid);
     auction.endAuction();
 
     expect(auction.status).to.equal("done");
