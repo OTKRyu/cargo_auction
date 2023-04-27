@@ -1,6 +1,0 @@
-CREATE TABLE AUCTION_HISTORY (
-  ID int,
-  AUCTION_ID int,
-  TRUCKER_ID int,
-  TRANSPORT_FEE int,
-)
