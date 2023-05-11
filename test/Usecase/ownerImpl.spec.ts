@@ -10,7 +10,7 @@ describe("OwnerImpl test", () => {
   const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
   it("OwnerImpl property test", () => {
-    expect(owner.id).to.equal(0);
+    expect(owner.ownerId).to.equal(0);
     expect(owner.userName).to.equal("name");
     expect(owner.account).deep.equal(account);
   });
@@ -18,11 +18,11 @@ describe("OwnerImpl test", () => {
   it("OwnerImpl method registerCargo test", () => {
     const cargo = owner.registerCargo(0, "cargo", "2023-02-20", undefined);
 
-    expect(cargo.id).to.equal(0);
+    expect(cargo.ownerId).to.equal(0);
     expect(cargo.name).to.equal("cargo");
     expect(cargo.transportDueDate).to.equal("2023-02-20");
     expect(cargo.description).to.equal(undefined);
-    expect(cargo.ownerId).to.equal(owner.id);
+    expect(cargo.ownerId).to.equal(owner.ownerId);
     expect(cargo.status).to.equal("todo");
   });
 
@@ -35,9 +35,9 @@ describe("OwnerImpl test", () => {
       50
     );
 
-    expect(auction.id).to.equal(0);
+    expect(auction.ownerId).to.equal(0);
     expect(auction.cargo).deep.equal(cargo);
-    expect(auction.ownerId).to.equal(owner.id);
+    expect(auction.ownerId).to.equal(owner.ownerId);
     expect(auction.auctionExpireDate).to.equal("2023-02-28");
     expect(auction.auctionStartDate).to.equal("2023-02-20");
     expect(auction.transportFeeUpperLimit).to.equal(50);

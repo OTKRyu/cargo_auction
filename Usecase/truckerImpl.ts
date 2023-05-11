@@ -4,38 +4,41 @@ import Auction from "../Entity/auction";
 import Cargo from "../Entity/cargo";
 
 class TruckerImpl implements Trucker {
-  id: number;
+  truckerId: number;
   userName: string;
   account: Account;
 
-  constructor(id: number, userName: string, account: Account) {
-    this.id = id;
+  constructor(truckerId: number, userName: string, account: Account) {
+    this.truckerId = truckerId;
     this.userName = userName;
     this.account = account;
   }
   participateAuction(auction: Auction, transportFee: number): boolean {
     const bid = {
-      auctionId: auction.id,
-      truckerId: this.id,
-      transportFee: transportFee
+      auctionId: auction.auctionId,
+      truckerId: this.truckerId,
+      transportFee: transportFee,
     };
     auction.addBid(bid);
     return true;
   }
   eraseLatestAuctionBid(auction: Auction): boolean {
     if (auction.auctionHistory.length == 0) {
-      throw Error("Auction doesn't have bids")
+      throw Error("Auction doesn't have bids");
     }
 
-    if (auction.auctionHistory[auction.auctionHistory.length - 1].truckerId !== this.id) {
-      throw Error("You can erase your bid only when your bid is latest one")
+    if (
+      auction.auctionHistory[auction.auctionHistory.length - 1].truckerId !==
+      this.truckerId
+    ) {
+      throw Error("You can erase your bid only when your bid is latest one");
     }
 
-    auction.auctionHistory.pop()
-    return true
+    auction.auctionHistory.pop();
+    return true;
   }
   changeCargoStatus(cargo: Cargo): boolean {
-    if (cargo.truckerId === this.id && cargo.status === "todo") {
+    if (cargo.truckerId === this.truckerId && cargo.status === "todo") {
       cargo.status = "progress";
       return true;
     }
@@ -44,7 +47,7 @@ class TruckerImpl implements Trucker {
       throw new Error("This cargo didn't get trucker yet");
     }
 
-    if (cargo.truckerId !== this.id) {
+    if (cargo.truckerId !== this.truckerId) {
       throw new Error("This cargo isn't yours");
     }
 

@@ -1,11 +1,11 @@
 import Account from "../Entity/account";
 
 class AccountImpl implements Account {
-  id: number;
+  accountId: number;
   balance: number;
 
-  constructor(id: number, balance: number) {
-    this.id = id;
+  constructor(accountId: number, balance: number) {
+    this.accountId = accountId;
     this.balance = balance;
   }
   deposit(amount: number) {

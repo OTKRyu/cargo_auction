@@ -2,7 +2,7 @@ import Cargo from "./cargo";
 import Bid from "./bid";
 
 interface Auction {
-  id: number;
+  auctionId: number;
   cargo: Cargo;
   ownerId: number;
   auctionExpireDate: string;

@@ -1,5 +1,5 @@
 class Cargo {
-  id: number;
+  cargoId: number;
   name: string;
   transportDueDate: string;
   description: string | undefined;
@@ -8,13 +8,13 @@ class Cargo {
   status: "todo" | "progress" | "arrived";
 
   constructor(
-    id: number,
+    cargoId: number,
     name: string,
     transportDueDate: string,
     description: string | undefined,
     ownerId: number
   ) {
-    this.id = id;
+    this.cargoId = cargoId;
     this.name = name;
     this.transportDueDate = transportDueDate;
     this.description = description;

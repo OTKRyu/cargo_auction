@@ -12,15 +12,15 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
     );
 
-    expect(auction.id).to.equal(0);
+    expect(auction.auctionId).to.equal(0);
     expect(auction.cargo).deep.equal(cargo);
-    expect(auction.ownerId).to.equal(owner.id);
+    expect(auction.ownerId).to.equal(owner.ownerId);
     expect(auction.auctionExpireDate).to.equal("2023-02-28");
     expect(auction.auctionStartDate).to.equal("2023-02-20");
     expect(auction.transportFeeUpperLimit).to.equal(500);
@@ -32,7 +32,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -46,7 +46,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -67,7 +67,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -94,7 +94,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -115,7 +115,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -135,7 +135,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -162,7 +162,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -188,7 +188,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -205,7 +205,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -222,7 +222,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       1,
       localCargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -233,7 +233,7 @@ describe("auction test", () => {
     const truckerId = 0;
 
     const bid = {
-      auctionId: auction.id,
+      auctionId: auction.auctionId,
       truckerId: truckerId,
       transportFee: 10,
     };
@@ -248,7 +248,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -263,7 +263,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -282,7 +282,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500
@@ -306,7 +306,7 @@ describe("auction test", () => {
     const auction = new AuctionImpl(
       0,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500

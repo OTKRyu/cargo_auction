@@ -7,27 +7,33 @@ import Trucker from "../Entity/trucker";
 import AuctionImpl from "./auctionImpl";
 
 class OwnerImpl implements Owner {
-  id: number;
+  ownerId: number;
   userName: string;
   account: Account;
 
-  constructor(id: number, userName: string, account: Account) {
-    this.id = id;
+  constructor(ownerId: number, userName: string, account: Account) {
+    this.ownerId = ownerId;
     this.userName = userName;
     this.account = account;
   }
 
   registerCargo(
-    id: number,
+    cargoId: number,
     name: string,
     transportDueDate: string,
     description: string | undefined
   ) {
-    return new Cargo(id, name, transportDueDate, description, this.id);
+    return new Cargo(
+      cargoId,
+      name,
+      transportDueDate,
+      description,
+      this.ownerId
+    );
   }
 
   createAuction(
-    id: number,
+    auctionId: number,
     cargo: Cargo,
     auctionExpireDate: string,
     auctionStartDate: string,
@@ -38,9 +44,9 @@ class OwnerImpl implements Owner {
     }
 
     return new AuctionImpl(
-      id,
+      auctionId,
       cargo,
-      this.id,
+      this.ownerId,
       auctionExpireDate,
       auctionStartDate,
       transportFeeUpperLimit
@@ -65,20 +71,16 @@ class OwnerImpl implements Owner {
   }
 
   changeCargoStatus(cargo: Cargo) {
-    if (cargo.ownerId === this.id && cargo.status === "progress") {
+    if (cargo.ownerId !== this.ownerId) {
+      throw new Error("This cargo isn't yours");
+    }
+
+    if (cargo.status === "progress") {
       cargo.status = "arrived";
       return true;
     }
 
-    if (cargo.ownerId !== this.id) {
-      throw new Error("This cargo isn't yours");
-    }
-
-    if (cargo.status !== "progress") {
-      throw new Error("Your cargo isn't in progress");
-    }
-
-    throw new Error("Bad access to cargo");
+    throw new Error("Your cargo isn't in progress");
   }
 }
 

@@ -4,17 +4,17 @@ import Auction from "./auction";
 import Trucker from "./trucker";
 
 interface Owner {
-  id: number;
+  ownerId: number;
   userName: string;
   account: Account;
   registerCargo(
-    id: number,
+    cargoId: number,
     name: string,
     transportDueDate: string,
     description: string | undefined
   ): Cargo;
   createAuction(
-    id: number,
+    auctionId: number,
     cargo: Cargo,
     auctionExpireDate: string,
     auctionStartDate: string,

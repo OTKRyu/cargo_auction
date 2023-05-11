@@ -3,7 +3,7 @@ import Bid from "../Entity/bid";
 import Cargo from "../Entity/cargo";
 
 class AuctionImpl implements Auction {
-  id: number;
+  auctionId: number;
   cargo: Cargo;
   ownerId: number;
   auctionExpireDate: string;
@@ -14,14 +14,14 @@ class AuctionImpl implements Auction {
   status: "todo" | "progress" | "done";
 
   constructor(
-    id: number,
+    auctionId: number,
     cargo: Cargo,
     ownerId: number,
     auctionExpireDate: string,
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ) {
-    this.id = id;
+    this.auctionId = auctionId;
     if (cargo.ownerId !== ownerId) {
       throw new Error("Only cargo owner can create auction about the cargo");
     }
@@ -44,7 +44,7 @@ class AuctionImpl implements Auction {
   }
 
   addBid(bid: Bid): boolean {
-    if (bid.auctionId !== this.id) {
+    if (bid.auctionId !== this.auctionId) {
       throw new Error("Your bid doesn't belong this auction");
     }
 

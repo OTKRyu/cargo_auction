@@ -14,7 +14,7 @@ class AuctionPermanenceMock implements AuctionPermanence {
     const auction = new AuctionImpl(
       auctionId,
       cargo,
-      owner.id,
+      owner.ownerId,
       "2023-02-28",
       "2023-02-20",
       500

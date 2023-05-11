@@ -3,7 +3,7 @@ import Account from "./account";
 import Cargo from "./cargo";
 
 interface Trucker {
-  id: number;
+  truckerId: number;
   userName: string;
   account: Account;
   participateAuction(auction: Auction, transportFee: number): boolean;

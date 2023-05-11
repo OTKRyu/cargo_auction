@@ -4,7 +4,7 @@ import AccountImpl from "../../Usecase/accountImpl";
 describe("AccountImpl test", () => {
   it("accountImpl property test", () => {
     const account = new AccountImpl(0, 10);
-    expect(account.id).to.equal(0);
+    expect(account.accountId).to.equal(0);
     expect(account.balance).to.equal(10);
   });
 
