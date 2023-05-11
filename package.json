@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/OTKRyu/cargo_auction#readme",
   "dependencies": {
+    "@types/node": "^20.1.2",
+    "mysql2": "^3.3.0",
     "typescript": "^4.9.5"
   },
   "devDependencies": {
