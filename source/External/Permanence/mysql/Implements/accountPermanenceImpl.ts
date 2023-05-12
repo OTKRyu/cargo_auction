@@ -17,7 +17,7 @@ interface MaxAccountIdPacket extends RowDataPacket {
   MAX_ACCOUNT_ID: number;
 }
 
-class AccountPermaneneceImpl implements AccountPermanence {
+class AccountPermanenceImpl implements AccountPermanence {
   changeAccountPacketToAccount(accountPacket: AccountPacket) {
     return new AccountImpl(accountPacket.ACCOUNT_ID, accountPacket.BALANCE);
   }
@@ -35,22 +35,43 @@ class AccountPermaneneceImpl implements AccountPermanence {
       return account;
     } catch (err) {
       throw err;
+    } finally {
+      conn.end();
     }
   }
   async getNewAccountId() {
     const query = `SELECT MAX(ACCOUNT_ID) AS MAX_ACCOUNT_ID FROM ACCOUNT WHERE`;
     const conn = await createConnection(DBConfig);
     try {
-      let account;
       const [rows, fields]: [MaxAccountIdPacket[], FieldPacket[]] =
         await conn.query(query);
       return rows[0].MAX_ACCOUNT_ID + 1;
     } catch (err) {
       throw err;
+    } finally {
+      conn.end();
     }
   }
-  saveAccount(account: Account) {}
-  fetchAccount(account: Account) {}
+  async saveAccount(account: Account) {
+    const query = `INSERT INTO ACCOUNT (ACCOUNT_ID, BALANCE) VALUES(${account.accountId}, ${account.balance})`;
+    const conn = await createConnection(DBConfig);
+    try {
+      await conn.query(query);
+    } catch (err) {
+      throw err;
+    } finally {
+      conn.end();
+    }
+  }
+  async fetchAccount(account: Account) {
+    const query = `UPDATE ACCOUNT SET BALACNE=${account.balance} WHERE ACCOUNT_ID = ${account.accountId}`;
+    const conn = await createConnection(DBConfig);
+    try {
+      await conn.query(query);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 export default AccountPermanenceImpl;
