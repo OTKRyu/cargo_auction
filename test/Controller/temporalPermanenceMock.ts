@@ -1,10 +1,10 @@
-import Auction from "../../Entity/auction";
+import Auction from "../../source/Entity/auction";
 
-import AccountImpl from "../../Usecase/accountImpl";
-import OwnerImpl from "../../Usecase/ownerImpl";
-import AuctionImpl from "../../Usecase/auctionImpl";
+import AccountImpl from "../../source/Usecase/accountImpl";
+import OwnerImpl from "../../source/Usecase/ownerImpl";
+import AuctionImpl from "../../source/Usecase/auctionImpl";
 
-import TmporalAuctionPermanence from "../../Controller/temporalAuctionPermanence";
+import TmporalAuctionPermanence from "../../source/Controller/temporalAuctionPermanence";
 
 class TmporalAuctionPermanenceMock implements TmporalAuctionPermanence {
   createAuction(auctionId: number) {

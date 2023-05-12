@@ -1,9 +1,9 @@
-import Trucker from "../../Entity/trucker";
+import Trucker from "../../source/Entity/trucker";
 
-import TruckerImpl from "../../Usecase/truckerImpl";
-import AccountImpl from "../../Usecase/accountImpl";
+import TruckerImpl from "../../source/Usecase/truckerImpl";
+import AccountImpl from "../../source/Usecase/accountImpl";
 
-import TruckerPermanence from "../../Controller/truckerPermanence";
+import TruckerPermanence from "../../source/Controller/truckerPermanence";
 
 class TruckerPermanenceMock implements TruckerPermanence {
   createTrucker(truckerId: number) {

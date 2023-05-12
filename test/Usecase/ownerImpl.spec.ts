@@ -1,8 +1,8 @@
 import { expect, assert } from "chai";
 
-import OwnerImpl from "../../Usecase/ownerImpl";
-import AccountImpl from "../../Usecase/accountImpl";
-import TruckerImpl from "../../Usecase/truckerImpl";
+import OwnerImpl from "../../source/Usecase/ownerImpl";
+import AccountImpl from "../../source/Usecase/accountImpl";
+import TruckerImpl from "../../source/Usecase/truckerImpl";
 
 describe("OwnerImpl test", () => {
   const account = new AccountImpl(0, 100);

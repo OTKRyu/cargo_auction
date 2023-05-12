@@ -1,5 +1,5 @@
 import { expect, assert } from "chai";
-import AccountImpl from "../../Usecase/accountImpl";
+import AccountImpl from "../../source/Usecase/accountImpl";
 
 describe("AccountImpl test", () => {
   it("accountImpl property test", () => {

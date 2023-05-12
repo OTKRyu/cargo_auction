@@ -1,9 +1,9 @@
-import Owner from "../../Entity/owner";
+import Owner from "../../source/Entity/owner";
 
-import AccountImpl from "../../Usecase/accountImpl";
-import OwnerImpl from "../../Usecase/ownerImpl";
+import AccountImpl from "../../source/Usecase/accountImpl";
+import OwnerImpl from "../../source/Usecase/ownerImpl";
 
-import OwnerPermanence from "../../Controller/ownerPermanence";
+import OwnerPermanence from "../../source/Controller/ownerPermanence";
 
 class OwnerPermanenceMock implements OwnerPermanence {
   getOwner(ownerId: number) {

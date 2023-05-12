@@ -1,6 +1,6 @@
-import Cargo from "../../Entity/cargo";
+import Cargo from "../../source/Entity/cargo";
 
-import CargoPermanence from "../../Controller/cargoPermanence";
+import CargoPermanence from "../../source/Controller/cargoPermanence";
 
 class CargoPermanenceMock implements CargoPermanence {
   registerCargo(cargoId: number) {
