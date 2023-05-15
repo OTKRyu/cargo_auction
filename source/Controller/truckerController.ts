@@ -14,12 +14,12 @@ class TruckerController {
     tmporalAuctionPermanence: TmporalAuctionPermanence,
     cargoPermanence: CargoPermanence,
     truckerPermanence: TruckerPermanence,
-    truckerId: number
+    trucker: Trucker
   ) {
     this.tmporalAuctionPermanence = tmporalAuctionPermanence;
     this.cargoPermanence = cargoPermanence;
     this.truckerPermanence = truckerPermanence;
-    this.trucker = this.truckerPermanence.getTrucker(truckerId);
+    this.trucker = trucker;
   }
 
   participateAuction(auctionId: number, transportFee: number) {

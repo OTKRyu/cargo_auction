@@ -20,14 +20,14 @@ class OwnerController {
     auctionPermanence: AuctionPermanence,
     cargoPermanence: CargoPermanence,
     truckerPermanence: TruckerPermanence,
-    ownerId: number
+    owner: Owner
   ) {
     this.tmporalAuctionPermanence = tmporalAuctionPermanence;
     this.ownerPermanence = ownerPermanence;
     this.auctionPermanence = auctionPermanence;
     this.cargoPermanence = cargoPermanence;
     this.truckerPermanence = truckerPermanence;
-    this.owner = this.ownerPermanence.getOwner(ownerId);
+    this.owner = owner;
   }
 
   registerNewCargo(
@@ -66,9 +66,9 @@ class OwnerController {
     return auction;
   }
 
-  payTransportFee(auctionId: number, truckerId: number) {
+  async payTransportFee(auctionId: number, truckerId: number) {
     const auction = this.auctionPermanence.getAuction(auctionId);
-    const trucker = this.truckerPermanence.getTrucker(truckerId);
+    const trucker = await this.truckerPermanence.getTrucker(truckerId);
 
     this.owner.payTransportFee(auction, trucker);
 

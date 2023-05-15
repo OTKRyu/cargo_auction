@@ -3,10 +3,10 @@ import { createConnection, FieldPacket, RowDataPacket } from "mysql2/promise";
 import Owner from "../../../../Entity/owner";
 import OwnerImpl from "../../../../Usecase/ownerImpl";
 
+import AccountPermanence from "../../../../Controller/accountPermanence";
 import OwnerPermanence from "../../../../Controller/ownerPermanence";
 
-import AccountPermanence from "./accountPermanence";
-import DBconfig from "./DBConfig";
+import DBConfig from "./DBConfig";
 
 interface OwnerPacket extends RowDataPacket {
   OWNER_ID: number;
@@ -14,35 +14,58 @@ interface OwnerPacket extends RowDataPacket {
   ACCOUNT_ID: number;
 }
 
+interface MaxOwnerIdPacket extends RowDataPacket {
+  MAX_OWNER_ID: number;
+}
+
 class OwnerPermanenceImpl implements OwnerPermanence {
-  changeOwnerPacketToOwner(ownerPacket: OwnerPacket) {
-    const owner = new OwnerImpl(ownerPacket.OWNER_ID, ownerPacket.USER_NAME);
+  accountPermanence: AccountPermanence;
+
+  constructor(accountPermanence: AccountPermanence) {
+    this.accountPermanence = accountPermanence;
+  }
+
+  async changeOwnerPacketToOwner(ownerPacket: OwnerPacket) {
+    const account = await this.accountPermanence.getAccount(
+      ownerPacket.ACCOUNT_ID
+    );
+
+    const owner = new OwnerImpl(
+      ownerPacket.OWNER_ID,
+      ownerPacket.USER_NAME,
+      account
+    );
+
     return owner;
   }
+
   async getOwner(ownerId: number) {
     const query = `SELECT * FROM OWNER WHERE OWNER_ID = ${ownerId}`;
-    const conn = await createConnection(DBconfig);
-    try {
-      let owner;
-      const [rows, fields]: [OwnerPacket[], FieldPacket[]] = await conn.query(
-        query
-      );
-      rows.forEach((row: OwnerPacket) => {
-        owner = this.changeOwnerPacketToOwner(row);
-      });
-      return owner;
-    } catch (err) {
-      throw err;
-    }
+    const conn = await createConnection(DBConfig);
+    const [rows, fields]: [OwnerPacket[], FieldPacket[]] = await conn.query(
+      query
+    );
+    conn.end();
+    const result = await this.changeOwnerPacketToOwner(rows[0]);
+    return result;
   }
-  getOwners() {
-    return;
+  async getNewOwnerId() {
+    const query = `SELECT MAX(OWNER_ID) AS MAX_ACCOUNT_ID FROM OWNER`;
+    const conn = await createConnection(DBConfig);
+    const [rows, fields]: [MaxOwnerIdPacket[], FieldPacket[]] =
+      await conn.query(query);
+    await conn.end();
+    return rows[0].MAX_OWNER_ID + 1;
   }
-  getNewOwnerId() {
-    return;
+  async saveOwner(owner: Owner) {
+    const query = `INSERT INTO OWNER (OWNER_ID, USER_NAME, ACCOUNT_ID) VALUES(${owner.ownerId}, ${owner.userName}, ${owner.account.accountId})`;
+    const conn = await createConnection(DBConfig);
+    await conn.query(query);
+    await conn.end();
   }
-  saveOwner(owner: Owner) {}
-  fetchOwner(owner: Owner) {}
+  async fetchOwner(owner: Owner) {
+    await this.accountPermanence.fetchAccount(owner.account);
+  }
 }
 
 export default OwnerPermanenceImpl;

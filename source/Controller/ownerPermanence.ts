@@ -1,11 +1,10 @@
 import Owner from "../Entity/owner";
 
 interface OwnerPermanence {
-  getOwner(ownerId: number): Promise<Owner> | Promise<undefined>;
-  getOwners(): Promise<Array<Owner>> | Promise<undefined>;
-  getNewOwnerId(): Promise<number> | Promise<undefined>;
-  saveOwner(owner: Owner): Promise<void> | Promise<undefined>;
-  fetchOwner(owner: Owner): Promise<void> | Promise<undefined>;
+  getOwner(ownerId: number): Promise<Owner>;
+  getNewOwnerId(): Promise<number>;
+  saveOwner(owner: Owner): Promise<void>;
+  fetchOwner(owner: Owner): Promise<void>;
 }
 
 export default OwnerPermanence;

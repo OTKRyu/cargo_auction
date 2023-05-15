@@ -11,10 +11,10 @@ class TruckerCreateController {
     this.truckerPermanence = truckerPermanence;
   }
 
-  createNewTrucker(userName: string, account: Account) {
-    const truckerId = this.truckerPermanence.getNewTruckerId();
+  async createNewTrucker(userName: string, account: Account) {
+    const truckerId = await this.truckerPermanence.getNewTruckerId();
     const trucker = new TruckerImpl(truckerId, userName, account);
-    this.truckerPermanence.saveTrucker(trucker);
+    await this.truckerPermanence.saveTrucker(trucker);
     return trucker;
   }
 }
