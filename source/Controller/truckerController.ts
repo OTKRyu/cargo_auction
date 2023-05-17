@@ -1,4 +1,4 @@
-import Trucker from "../Entity/trucker";
+import Trucker from "../entity/trucker";
 
 import TmporalAuctionPermanence from "./temporalAuctionPermanence";
 import CargoPermanence from "./cargoPermanence";

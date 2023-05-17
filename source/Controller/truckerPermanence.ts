@@ -1,4 +1,4 @@
-import Trucker from "../Entity/trucker";
+import Trucker from "../entity/trucker";
 
 interface TruckerPermanence {
   getTrucker(truckerId: number): Promise<Trucker>;

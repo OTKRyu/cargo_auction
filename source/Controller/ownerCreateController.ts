@@ -1,6 +1,6 @@
-import Account from "../Entity/account";
+import Account from "../entity/account";
 
-import OwnerImpl from "../Usecase/ownerImpl";
+import OwnerImpl from "../usecase/ownerImpl";
 
 import OwnerPermanence from "./ownerPermanence";
 

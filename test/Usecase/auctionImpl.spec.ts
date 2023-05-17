@@ -1,8 +1,8 @@
 import { expect, assert } from "chai";
 
-import AuctionImpl from "../../source/Usecase/auctionImpl";
-import OwnerImpl from "../../source/Usecase/ownerImpl";
-import AccountImpl from "../../source/Usecase/accountImpl";
+import AuctionImpl from "../../source/usecase/auctionImpl";
+import OwnerImpl from "../../source/usecase/ownerImpl";
+import AccountImpl from "../../source/usecase/accountImpl";
 
 describe("auction test", () => {
   const account = new AccountImpl(0, 0);

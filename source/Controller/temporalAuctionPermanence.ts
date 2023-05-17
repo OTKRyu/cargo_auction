@@ -1,4 +1,4 @@
-import Auction from "../Entity/auction";
+import Auction from "../entity/auction";
 
 interface TemporalAuctionPermanence {
   getActiveAuctions(): Array<Auction>;

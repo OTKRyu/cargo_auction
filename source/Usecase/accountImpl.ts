@@ -1,4 +1,4 @@
-import Account from "../Entity/account";
+import Account from "../entity/account";
 
 class AccountImpl implements Account {
   accountId: number;

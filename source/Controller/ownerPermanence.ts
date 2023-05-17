@@ -1,4 +1,4 @@
-import Owner from "../Entity/owner";
+import Owner from "../entity/owner";
 
 interface OwnerPermanence {
   getOwner(ownerId: number): Promise<Owner>;

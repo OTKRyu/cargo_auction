@@ -1,6 +1,6 @@
-import Account from "../Entity/account";
+import Account from "../entity/account";
 
-import TruckerImpl from "../Usecase/truckerImpl";
+import TruckerImpl from "../usecase/truckerImpl";
 
 import TruckerPermanence from "./truckerPermanence";
 

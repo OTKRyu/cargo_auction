@@ -1,8 +1,8 @@
-import Owner from "../Entity/owner";
-import Cargo from "../Entity/cargo";
-import Account from "../Entity/account";
-import Auction from "../Entity/auction";
-import Trucker from "../Entity/trucker";
+import Owner from "../entity/owner";
+import Cargo from "../entity/cargo";
+import Account from "../entity/account";
+import Auction from "../entity/auction";
+import Trucker from "../entity/trucker";
 
 import AuctionImpl from "./auctionImpl";
 

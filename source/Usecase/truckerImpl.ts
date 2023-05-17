@@ -1,7 +1,7 @@
-import Trucker from "../Entity/trucker";
-import Account from "../Entity/account";
-import Auction from "../Entity/auction";
-import Cargo from "../Entity/cargo";
+import Trucker from "../entity/trucker";
+import Account from "../entity/account";
+import Auction from "../entity/auction";
+import Cargo from "../entity/cargo";
 
 class TruckerImpl implements Trucker {
   truckerId: number;

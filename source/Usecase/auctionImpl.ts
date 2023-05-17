@@ -1,6 +1,6 @@
-import Auction from "../Entity/auction";
-import Bid from "../Entity/bid";
-import Cargo from "../Entity/cargo";
+import Auction from "../entity/auction";
+import Bid from "../entity/bid";
+import Cargo from "../entity/cargo";
 
 class AuctionImpl implements Auction {
   auctionId: number;

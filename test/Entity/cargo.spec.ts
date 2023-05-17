@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import Cargo from "../../source/Entity/cargo";
+import Cargo from "../../source/entity/cargo";
 
 describe("cargo test", () => {
   it("cargo property test", () => {

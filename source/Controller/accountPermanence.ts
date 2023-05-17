@@ -1,4 +1,4 @@
-import Account from "../Entity/account";
+import Account from "../entity/account";
 
 interface AccountPermanence {
   getAccount(accountId: number): Promise<Account>;

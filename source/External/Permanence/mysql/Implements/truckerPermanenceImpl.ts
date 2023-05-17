@@ -1,10 +1,10 @@
 import { createConnection, FieldPacket, RowDataPacket } from "mysql2/promise";
 
-import Trucker from "../../../../Entity/trucker";
-import TruckerImpl from "../../../../Usecase/truckerImpl";
+import Trucker from "../../../../entity/trucker";
+import TruckerImpl from "../../../../usecase/truckerImpl";
 
-import AccountPermanence from "../../../../Controller/accountPermanence";
-import TruckerPermanence from "../../../../Controller/truckerPermanence";
+import AccountPermanence from "../../../../controller/accountPermanence";
+import TruckerPermanence from "../../../../controller/truckerPermanence";
 
 import DBConfig from "./DBConfig";
 

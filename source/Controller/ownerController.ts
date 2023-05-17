@@ -1,4 +1,4 @@
-import Owner from "../Entity/owner";
+import Owner from "../entity/owner";
 
 import TmporalAuctionPermanence from "./temporalAuctionPermanence";
 import OwnerPermanence from "./ownerPermanence";

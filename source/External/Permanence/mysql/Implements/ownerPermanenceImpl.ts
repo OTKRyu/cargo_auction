@@ -1,10 +1,10 @@
 import { createConnection, FieldPacket, RowDataPacket } from "mysql2/promise";
 
-import Owner from "../../../../Entity/owner";
-import OwnerImpl from "../../../../Usecase/ownerImpl";
+import Owner from "../../../../entity/owner";
+import OwnerImpl from "../../../../usecase/ownerImpl";
 
-import AccountPermanence from "../../../../Controller/accountPermanence";
-import OwnerPermanence from "../../../../Controller/ownerPermanence";
+import AccountPermanence from "../../../../controller/accountPermanence";
+import OwnerPermanence from "../../../../controller/ownerPermanence";
 
 import DBConfig from "./DBConfig";
 

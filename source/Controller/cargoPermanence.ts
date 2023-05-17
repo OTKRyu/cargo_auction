@@ -1,4 +1,4 @@
-import Cargo from "../Entity/cargo";
+import Cargo from "../entity/cargo";
 
 interface CargoPermanence {
   getCargo(cargoId: number): Cargo;
