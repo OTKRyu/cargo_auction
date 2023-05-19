@@ -12,4 +12,6 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use("/", ownerRouter)
 
-app.listen(PORT)
+app.listen(PORT,() => {
+    console.log("server on")
+})

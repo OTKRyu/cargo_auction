@@ -1,9 +1,11 @@
 import express, { Request, Response} from "express"
 
+import AccountImpl from '../../../usecase/accountImpl';
+
 import OwnerCreateController from '../../../controller/ownerCreateController'
-import OwnerPermanenceImpl from 'source/external/permanence/mysql/implements/ownerPermanenceImpl';
-import AccountPermanenceImpl from 'source/external/permanence/mysql/implements/accountPermanenceImpl';
-import AccountImpl from 'source/usecase/accountImpl';
+
+import OwnerPermanenceImpl from '../../../external/permanence/mysql/implements/ownerPermanenceImpl';
+import AccountPermanenceImpl from '../../../external/permanence/mysql/implements/accountPermanenceImpl';
 
 const router = express.Router()
 
