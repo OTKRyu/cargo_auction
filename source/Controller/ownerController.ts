@@ -1,13 +1,11 @@
 import Owner from "../entity/owner";
 
-import TmporalAuctionPermanence from "./temporalAuctionPermanence";
 import OwnerPermanence from "./ownerPermanence";
 import AuctionPermanence from "./auctionPermanence";
 import CargoPermanence from "./cargoPermanence";
 import TruckerPermanence from "./truckerPermanence";
 
 class OwnerController {
-  tmporalAuctionPermanence: TmporalAuctionPermanence;
   ownerPermanence: OwnerPermanence;
   auctionPermanence: AuctionPermanence;
   cargoPermanence: CargoPermanence;
@@ -15,14 +13,12 @@ class OwnerController {
   owner: Owner;
 
   constructor(
-    tmporalAuctionPermanence: TmporalAuctionPermanence,
     ownerPermanence: OwnerPermanence,
     auctionPermanence: AuctionPermanence,
     cargoPermanence: CargoPermanence,
     truckerPermanence: TruckerPermanence,
     owner: Owner
   ) {
-    this.tmporalAuctionPermanence = tmporalAuctionPermanence;
     this.ownerPermanence = ownerPermanence;
     this.auctionPermanence = auctionPermanence;
     this.cargoPermanence = cargoPermanence;
