@@ -50,7 +50,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     return result;
   }
   async getNewOwnerId() {
-    const query = `SELECT MAX(OWNER_ID) AS MAX_ACCOUNT_ID FROM OWNER`;
+    const query = `SELECT MAX(OWNER_ID) AS MAX_OWNER_ID FROM OWNER`;
     const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [MaxOwnerIdPacket[], FieldPacket[]] =
       await conn.query(query);
@@ -58,9 +58,11 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     return rows[0].MAX_OWNER_ID + 1;
   }
   async saveOwner(owner: Owner) {
-    const query = `INSERT INTO OWNER (OWNER_ID, USER_NAME, ACCOUNT_ID) VALUES(${owner.ownerId}, ${owner.userName}, ${owner.account.accountId})`;
+    const accountQuery = `INSERT INTO ACCOUNT (ACCOUNT_ID, BALANCE) VALUES(${owner.account.accountId}, ${owner.account.balance})`;
+    const ownerQuery = `INSERT INTO OWNER (OWNER_ID, USER_NAME, ACCOUNT_ID) VALUES(${owner.ownerId}, "${owner.userName}", ${owner.account.accountId})`;
     const conn = await createConnection(DB_CONFIG);
-    await conn.query(query);
+    await conn.query(accountQuery);
+    await conn.query(ownerQuery);
     await conn.end();
   }
   async fetchOwner(owner: Owner) {

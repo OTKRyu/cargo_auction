@@ -58,9 +58,11 @@ class TruckerPermanenceImpl implements TruckerPermanence {
     return rows[0].MAX_TRUCKER_ID + 1;
   }
   async saveTrucker(trucker: Trucker) {
-    const query = `INSERT INTO TRUCKER (TRUCKER_ID, USER_NAME, ACCOUNT_ID) VALUES(${trucker.truckerId}, ${trucker.userName}, ${trucker.account.accountId})`;
+    const accountQuery = `INSERT INTO ACCOUNT (ACCOUNT_ID, BALANCE) VALUES(${trucker.account.accountId}, ${trucker.account.balance})`;
+    const truckerQuery = `INSERT INTO TRUCKER (TRUCKER_ID, USER_NAME, ACCOUNT_ID) VALUES(${trucker.truckerId}, "${trucker.userName}", ${trucker.account.accountId})`;
     const conn = await createConnection(DB_CONFIG);
-    await conn.query(query);
+    await conn.query(accountQuery);
+    await conn.query(truckerQuery);
     await conn.end();
   }
   async fetchTrucker(trucker: Trucker) {
