@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const DB_CONFIG = {
   host: "localhost",
   user: process.env.MYSQL_USER,
