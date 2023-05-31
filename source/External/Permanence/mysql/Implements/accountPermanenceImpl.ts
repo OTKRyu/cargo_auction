@@ -6,7 +6,7 @@ import AccountImpl from "../../../../usecase/accountImpl";
 
 import AccountPermanence from "../../../../controller/accountPermanence";
 
-import DBConfig from "./DBConfig";
+import DB_CONFIG from "./DB_CONFIG";
 
 interface AccountPacket extends RowDataPacket {
   ACCOUNT_ID: number;
@@ -24,7 +24,7 @@ class AccountPermanenceImpl implements AccountPermanence {
 
   async getAccount(accountId: number) {
     const query = `SELECT * FROM ACCOUNT WHERE ACCOUNT_ID = ${accountId}`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [AccountPacket[], FieldPacket[]] = await conn.query(
       query
     );
@@ -35,7 +35,7 @@ class AccountPermanenceImpl implements AccountPermanence {
 
   async getNewAccountId() {
     const query = `SELECT MAX(ACCOUNT_ID) AS MAX_ACCOUNT_ID FROM ACCOUNT`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [MaxAccountIdPacket[], FieldPacket[]] =
       await conn.query(query);
     await conn.end();
@@ -44,14 +44,14 @@ class AccountPermanenceImpl implements AccountPermanence {
 
   async saveAccount(account: Account) {
     const query = `INSERT INTO ACCOUNT (ACCOUNT_ID, BALANCE) VALUES(${account.accountId}, ${account.balance})`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     await conn.query(query);
     await conn.end();
   }
 
   async fetchAccount(account: Account) {
     const query = `UPDATE ACCOUNT SET BALACNE=${account.balance} WHERE ACCOUNT_ID = ${account.accountId}`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     await conn.query(query);
     await conn.end();
   }

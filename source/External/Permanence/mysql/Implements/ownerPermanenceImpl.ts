@@ -6,7 +6,7 @@ import OwnerImpl from "../../../../usecase/ownerImpl";
 import AccountPermanence from "../../../../controller/accountPermanence";
 import OwnerPermanence from "../../../../controller/ownerPermanence";
 
-import DBConfig from "./DBConfig";
+import DB_CONFIG from "./DB_CONFIG";
 
 interface OwnerPacket extends RowDataPacket {
   OWNER_ID: number;
@@ -41,7 +41,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
 
   async getOwner(ownerId: number) {
     const query = `SELECT * FROM OWNER WHERE OWNER_ID = ${ownerId}`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [OwnerPacket[], FieldPacket[]] = await conn.query(
       query
     );
@@ -51,7 +51,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
   }
   async getNewOwnerId() {
     const query = `SELECT MAX(OWNER_ID) AS MAX_ACCOUNT_ID FROM OWNER`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [MaxOwnerIdPacket[], FieldPacket[]] =
       await conn.query(query);
     await conn.end();
@@ -59,7 +59,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
   }
   async saveOwner(owner: Owner) {
     const query = `INSERT INTO OWNER (OWNER_ID, USER_NAME, ACCOUNT_ID) VALUES(${owner.ownerId}, ${owner.userName}, ${owner.account.accountId})`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     await conn.query(query);
     await conn.end();
   }

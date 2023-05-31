@@ -6,7 +6,7 @@ import TruckerImpl from "../../../../usecase/truckerImpl";
 import AccountPermanence from "../../../../controller/accountPermanence";
 import TruckerPermanence from "../../../../controller/truckerPermanence";
 
-import DBConfig from "./DBConfig";
+import DB_CONFIG from "./DB_CONFIG";
 
 interface TruckerPacket extends RowDataPacket {
   TRUCKER_ID: number;
@@ -41,7 +41,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
 
   async getTrucker(truckerId: number) {
     const query = `SELECT * FROM TRUCKER WHERE TRUCKER_ID = ${truckerId}`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [TruckerPacket[], FieldPacket[]] = await conn.query(
       query
     );
@@ -51,7 +51,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
   }
   async getNewTruckerId() {
     const query = `SELECT MAX(TRUCKER_ID) AS MAX_TRUCKER_ID FROM TRUCKER`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [MaxTruckerIdPacket[], FieldPacket[]] =
       await conn.query(query);
     await conn.end();
@@ -59,7 +59,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
   }
   async saveTrucker(trucker: Trucker) {
     const query = `INSERT INTO TRUCKER (TRUCKER_ID, USER_NAME, ACCOUNT_ID) VALUES(${trucker.truckerId}, ${trucker.userName}, ${trucker.account.accountId})`;
-    const conn = await createConnection(DBConfig);
+    const conn = await createConnection(DB_CONFIG);
     await conn.query(query);
     await conn.end();
   }
