@@ -26,29 +26,29 @@ class OwnerController {
     this.owner = owner;
   }
 
-  registerNewCargo(
+  async registerNewCargo(
     name: string,
     transportDueDate: string,
     description: string | undefined
   ) {
-    const cargoId = this.cargoPermanence.getNewCargoId();
+    const cargoId = await this.cargoPermanence.getNewCargoId();
     const cargo = this.owner.registerCargo(
       cargoId,
       name,
       transportDueDate,
       description
     );
-    this.cargoPermanence.saveCargo(cargo);
+    await this.cargoPermanence.saveCargo(cargo);
     return cargo;
   }
-  createNewAuction(
+  async createNewAuction(
     cargoId: number,
     auctionExpireDate: string,
     auctionStartDate: string,
     transportFeeUpperLimit: number
   ) {
-    const auctionId = this.auctionPermanence.getNewAuctionId();
-    const cargo = this.cargoPermanence.getCargo(cargoId);
+    const auctionId = await this.auctionPermanence.getNewAuctionId();
+    const cargo = await this.cargoPermanence.getCargo(cargoId);
 
     const auction = this.owner.createAuction(
       auctionId,
@@ -58,23 +58,23 @@ class OwnerController {
       transportFeeUpperLimit
     );
 
-    this.auctionPermanence.saveAuction(auction);
+    await this.auctionPermanence.saveAuction(auction);
     return auction;
   }
 
   async payTransportFee(auctionId: number, truckerId: number) {
-    const auction = this.auctionPermanence.getAuction(auctionId);
+    const auction = await this.auctionPermanence.getAuction(auctionId);
     const trucker = await this.truckerPermanence.getTrucker(truckerId);
 
     this.owner.payTransportFee(auction, trucker);
 
-    this.ownerPermanence.saveOwner(this.owner);
-    this.truckerPermanence.saveTrucker(trucker);
+    await this.ownerPermanence.saveOwner(this.owner);
+    await this.truckerPermanence.saveTrucker(trucker);
     return this.owner;
   }
 
-  changeCargoStatus(cargoId: number) {
-    const cargo = this.cargoPermanence.getCargo(cargoId);
+  async changeCargoStatus(cargoId: number) {
+    const cargo = await this.cargoPermanence.getCargo(cargoId);
 
     this.owner.changeCargoStatus(cargo);
 

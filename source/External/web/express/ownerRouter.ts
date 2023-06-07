@@ -21,7 +21,7 @@ router.post("", async (req: Request, res: Response) => {
     const accountId = await accountPermanence.getNewAccountId();
     const account = new AccountImpl(accountId, balance);
 
-    const owner = ownerCreateController.createNewOwner(userName, account);
+    const owner = await ownerCreateController.createNewOwner(userName, account);
 
     res.status(201).json(owner);
   } catch (error) {

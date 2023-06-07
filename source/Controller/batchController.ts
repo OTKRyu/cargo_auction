@@ -13,22 +13,22 @@ class BatchController {
     this.auctionPermanence = auctionPermanence;
   }
 
-  activateAuctions() {
-    const auctions = this.auctionPermanence.getStartSoonAuctions();
-    auctions.forEach((auction) => {
+  async activateAuctions() {
+    const auctions = await this.auctionPermanence.getStartSoonAuctions();
+    auctions.forEach(async (auction) => {
       auction.startAuction();
       this.tmporalAuctionPermanence.registerAuction(auction);
-      this.auctionPermanence.fetchAuction(auction);
+      await this.auctionPermanence.fetchAuction(auction);
     });
     return auctions;
   }
 
-  closeAuctions() {
-    const auctions = this.tmporalAuctionPermanence.getCloseSoonAuctions();
-    auctions.forEach((auction) => {
+  async closeAuctions() {
+    const auctions = await this.tmporalAuctionPermanence.getCloseSoonAuctions();
+    auctions.forEach(async (auction) => {
       auction.endAuction();
-      this.auctionPermanence.fetchAuction(auction);
-      this.tmporalAuctionPermanence.removeAuction(auction);
+      await this.auctionPermanence.fetchAuction(auction);
+      await this.tmporalAuctionPermanence.removeAuction(auction);
     });
   }
 }

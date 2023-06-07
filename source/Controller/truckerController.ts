@@ -22,17 +22,17 @@ class TruckerController {
     this.trucker = trucker;
   }
 
-  participateAuction(auctionId: number, transportFee: number) {
-    const auction = this.tmporalAuctionPermanence.getActiveAuction(auctionId);
+  async participateAuction(auctionId: number, transportFee: number) {
+    const auction = await this.tmporalAuctionPermanence.getActiveAuction(auctionId);
     this.trucker.participateAuction(auction, transportFee);
-    this.tmporalAuctionPermanence.fetchAuction(auction);
+    await this.tmporalAuctionPermanence.fetchAuction(auction);
     return auction;
   }
 
-  changeCargoStatus(cargoId: number) {
-    const cargo = this.cargoPermanence.getCargo(cargoId);
+  async changeCargoStatus(cargoId: number) {
+    const cargo = await this.cargoPermanence.getCargo(cargoId);
     this.trucker.changeCargoStatus(cargo);
-    this.cargoPermanence.fetchCargo(cargo);
+    await this.cargoPermanence.fetchCargo(cargo);
     return cargo;
   }
 }
