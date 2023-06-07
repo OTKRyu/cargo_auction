@@ -49,6 +49,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     const result = await this.changeOwnerPacketToOwner(rows[0]);
     return result;
   }
+
   async getNewOwnerId() {
     const query = `SELECT MAX(OWNER_ID) AS MAX_OWNER_ID FROM OWNER`;
     const conn = await createConnection(DB_CONFIG);
@@ -57,6 +58,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     await conn.end();
     return rows[0].MAX_OWNER_ID + 1;
   }
+
   async saveOwner(owner: Owner) {
     const accountQuery = `INSERT INTO ACCOUNT (ACCOUNT_ID, BALANCE) VALUES(${owner.account.accountId}, ${owner.account.balance})`;
     const ownerQuery = `INSERT INTO OWNER (OWNER_ID, USER_NAME, ACCOUNT_ID) VALUES(${owner.ownerId}, "${owner.userName}", ${owner.account.accountId})`;
@@ -65,6 +67,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     await conn.query(ownerQuery);
     await conn.end();
   }
+
   async fetchOwner(owner: Owner) {
     await this.accountPermanence.fetchAccount(owner.account);
   }

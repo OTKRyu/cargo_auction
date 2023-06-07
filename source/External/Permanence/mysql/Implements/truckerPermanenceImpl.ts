@@ -49,6 +49,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
     const result = await this.changeTruckerPacketToTrucker(rows[0]);
     return result;
   }
+
   async getNewTruckerId() {
     const query = `SELECT MAX(TRUCKER_ID) AS MAX_TRUCKER_ID FROM TRUCKER`;
     const conn = await createConnection(DB_CONFIG);
@@ -57,6 +58,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
     await conn.end();
     return rows[0].MAX_TRUCKER_ID + 1;
   }
+
   async saveTrucker(trucker: Trucker) {
     const accountQuery = `INSERT INTO ACCOUNT (ACCOUNT_ID, BALANCE) VALUES(${trucker.account.accountId}, ${trucker.account.balance})`;
     const truckerQuery = `INSERT INTO TRUCKER (TRUCKER_ID, USER_NAME, ACCOUNT_ID) VALUES(${trucker.truckerId}, "${trucker.userName}", ${trucker.account.accountId})`;
@@ -65,6 +67,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
     await conn.query(truckerQuery);
     await conn.end();
   }
+  
   async fetchTrucker(trucker: Trucker) {
     await this.accountPermanence.fetchAccount(trucker.account);
   }
