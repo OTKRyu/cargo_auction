@@ -21,7 +21,7 @@ class Cargo {
     this.transportDueDate = transportDueDate;
     this.description = description;
     this.ownerId = ownerId;
-    this.truckerId = truckerId
+    this.truckerId = truckerId;
     this.status = status;
   }
 }

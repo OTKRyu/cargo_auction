@@ -58,9 +58,9 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     await conn.end();
 
     if (rows[0].MAX_OWNER_ID === undefined || rows[0].MAX_OWNER_ID === null) {
-      return 0
+      return 0;
     }
-    
+
     return rows[0].MAX_OWNER_ID + 1;
   }
 

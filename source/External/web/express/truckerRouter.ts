@@ -23,9 +23,12 @@ router.post("", async (req: Request, res: Response) => {
     const accountId = await accountPermanence.getNewAccountId();
     const account = new AccountImpl(accountId, balance);
 
-    const owner = await truckerCreateController.createNewTrucker(userName, account);
+    const trucker = await truckerCreateController.createNewTrucker(
+      userName,
+      account
+    );
 
-    res.status(201).json(owner);
+    res.status(201).json(trucker);
   } catch (error) {
     res.status(500).json(error);
   }
