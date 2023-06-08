@@ -45,7 +45,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
     const [rows, fields]: [OwnerPacket[], FieldPacket[]] = await conn.query(
       query
     );
-    conn.end();
+    await conn.end();
     const result = await this.changeOwnerPacketToOwner(rows[0]);
     return result;
   }
