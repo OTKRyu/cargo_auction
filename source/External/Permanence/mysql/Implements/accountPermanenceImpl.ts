@@ -39,6 +39,11 @@ class AccountPermanenceImpl implements AccountPermanence {
     const [rows, fields]: [MaxAccountIdPacket[], FieldPacket[]] =
       await conn.query(query);
     await conn.end();
+    
+    if (rows[0].MAX_ACCOUNT_ID === undefined || rows[0].MAX_ACCOUNT_ID === null) {
+      return 0
+    } 
+
     return rows[0].MAX_ACCOUNT_ID + 1;
   }
 

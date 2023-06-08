@@ -56,6 +56,11 @@ class TruckerPermanenceImpl implements TruckerPermanence {
     const [rows, fields]: [MaxTruckerIdPacket[], FieldPacket[]] =
       await conn.query(query);
     await conn.end();
+
+    if (rows[0].MAX_TRUCKER_ID === undefined || rows[0].MAX_TRUCKER_ID === null) {
+      return 0
+    }
+    
     return rows[0].MAX_TRUCKER_ID + 1;
   }
 
