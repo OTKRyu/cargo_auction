@@ -12,14 +12,17 @@ class Cargo {
     name: string,
     transportDueDate: string,
     description: string | undefined,
-    ownerId: number
+    ownerId: number,
+    truckerId: number | undefined,
+    status: "todo" | "progress" | "arrived"
   ) {
     this.cargoId = cargoId;
     this.name = name;
     this.transportDueDate = transportDueDate;
     this.description = description;
     this.ownerId = ownerId;
-    this.status = "todo";
+    this.truckerId = truckerId
+    this.status = status;
   }
 }
 

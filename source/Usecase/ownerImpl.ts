@@ -28,7 +28,9 @@ class OwnerImpl implements Owner {
       name,
       transportDueDate,
       description,
-      this.ownerId
+      this.ownerId,
+      undefined,
+      "todo"
     );
   }
 
