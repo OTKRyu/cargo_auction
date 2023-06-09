@@ -19,7 +19,8 @@ class AuctionImpl implements Auction {
     ownerId: number,
     auctionExpireDate: string,
     auctionStartDate: string,
-    transportFeeUpperLimit: number
+    transportFeeUpperLimit: number,
+    auctionHistory: Array<Bid>
   ) {
     this.auctionId = auctionId;
     if (cargo.ownerId !== ownerId) {
@@ -31,7 +32,7 @@ class AuctionImpl implements Auction {
     this.auctionStartDate = auctionStartDate;
     this.transportFeeUpperLimit = transportFeeUpperLimit;
     this.status = "todo";
-    this.auctionHistory = [];
+    this.auctionHistory = auctionHistory;
   }
 
   findMinimumTransportFee(): number {

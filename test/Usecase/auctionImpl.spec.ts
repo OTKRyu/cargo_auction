@@ -15,7 +15,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     expect(auction.auctionId).to.equal(0);
@@ -35,7 +36,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     const result = auction.findMinimumTransportFee();
@@ -49,7 +51,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
     const bid = {
       auctionId: 0,
@@ -70,7 +73,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
     const bid1 = {
       auctionId: 0,
@@ -97,7 +101,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
     const bid = {
       auctionId: 1,
@@ -118,7 +123,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
     const bid = {
       auctionId: 0,
@@ -138,7 +144,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
     const bid1 = {
       auctionId: 0,
@@ -165,7 +172,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
     const bid1 = {
       auctionId: 0,
@@ -191,7 +199,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     assert.throw(
@@ -208,7 +217,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     auction.status = "done";
@@ -225,7 +235,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     auction.status = "done";
@@ -251,7 +262,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     auction.startAuction();
@@ -266,7 +278,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     auction.status = "progress";
@@ -285,7 +298,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     auction.status = "progress";
@@ -309,7 +323,8 @@ describe("auction test", () => {
       owner.ownerId,
       "2023-02-28",
       "2023-02-20",
-      500
+      500,
+      []
     );
 
     assert.throw(() => auction.endAuction(), Error, "Auction wasn't started");

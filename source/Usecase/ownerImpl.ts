@@ -51,7 +51,8 @@ class OwnerImpl implements Owner {
       this.ownerId,
       auctionExpireDate,
       auctionStartDate,
-      transportFeeUpperLimit
+      transportFeeUpperLimit,
+      []
     );
   }
 
