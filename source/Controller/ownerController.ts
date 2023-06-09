@@ -14,9 +14,9 @@ class OwnerController {
 
   constructor(
     ownerPermanence: OwnerPermanence,
-    auctionPermanence: AuctionPermanence,
-    cargoPermanence: CargoPermanence,
     truckerPermanence: TruckerPermanence,
+    cargoPermanence: CargoPermanence,
+    auctionPermanence: AuctionPermanence,
     owner: Owner
   ) {
     this.ownerPermanence = ownerPermanence;
