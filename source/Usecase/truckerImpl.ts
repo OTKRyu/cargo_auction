@@ -38,16 +38,19 @@ class TruckerImpl implements Trucker {
     return true;
   }
   changeCargoStatus(cargo: Cargo): boolean {
-    if (cargo.truckerId === this.truckerId && cargo.status === "todo") {
+    if (
+      cargo.determinedTruckerId === this.truckerId &&
+      cargo.status === "todo"
+    ) {
       cargo.status = "progress";
       return true;
     }
 
-    if (cargo.truckerId === undefined) {
+    if (cargo.determinedTruckerId === undefined) {
       throw new Error("This cargo didn't get trucker yet");
     }
 
-    if (cargo.truckerId !== this.truckerId) {
+    if (cargo.determinedTruckerId !== this.truckerId) {
       throw new Error("This cargo isn't yours");
     }
 

@@ -4,7 +4,7 @@ class Cargo {
   transportDueDate: string;
   description: string | undefined;
   ownerId: number;
-  truckerId: number | undefined;
+  determinedTruckerId: number | undefined;
   status: "todo" | "progress" | "arrived";
 
   constructor(
@@ -13,7 +13,7 @@ class Cargo {
     transportDueDate: string,
     description: string | undefined,
     ownerId: number,
-    truckerId: number | undefined,
+    determinedTruckerId: number | undefined,
     status: "todo" | "progress" | "arrived"
   ) {
     this.cargoId = cargoId;
@@ -21,7 +21,7 @@ class Cargo {
     this.transportDueDate = transportDueDate;
     this.description = description;
     this.ownerId = ownerId;
-    this.truckerId = truckerId;
+    this.determinedTruckerId = determinedTruckerId;
     this.status = status;
   }
 }

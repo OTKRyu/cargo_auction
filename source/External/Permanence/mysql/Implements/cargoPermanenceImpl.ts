@@ -14,7 +14,7 @@ interface CargoPacket extends RowDataPacket {
   TRANSPORT_DUE_DATE: string;
   DESCRIPTION: string;
   OWNER_ID: number;
-  TRUCKER_ID: number | undefined;
+  DETERMINED_TRUCKER_ID: number | undefined;
   STATUS: "todo" | "progress" | "arrived";
 }
 
@@ -41,7 +41,7 @@ class CargoPermanenceImpl implements CargoPermanence {
       cargoPacket.TRANSPORT_DUE_DATE,
       cargoPacket.DESCRIPTION,
       cargoPacket.OWNER_ID,
-      cargoPacket.TRUCKER_ID,
+      cargoPacket.DETERMINED_TRUCKER_ID,
       cargoPacket.STATUS
     );
     return cargo;
@@ -73,7 +73,7 @@ class CargoPermanenceImpl implements CargoPermanence {
   }
 
   async saveCargo(cargo: Cargo) {
-    const query = `INSERT INTO CARGO (CARGO_ID, NAME, TRASPORT_DUE_DATE, DESCRIPTION, OWNER_ID, TRUCKER_ID, STATUS) VALUES(${cargo.cargoId}, "${cargo.name}", ${cargo.transportDueDate}, "${cargo.description}", ${cargo.ownerId}, ${cargo.truckerId},${cargo.status})`;
+    const query = `INSERT INTO CARGO (CARGO_ID, NAME, TRASPORT_DUE_DATE, DESCRIPTION, OWNER_ID, STATUS) VALUES(${cargo.cargoId}, "${cargo.name}", ${cargo.transportDueDate}, "${cargo.description}", ${cargo.ownerId},${cargo.status})`;
     const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [CargoPacket[], FieldPacket[]] = await conn.query(
       query
@@ -82,7 +82,7 @@ class CargoPermanenceImpl implements CargoPermanence {
   }
 
   async fetchCargo(cargo: Cargo) {
-    const query = `UPDATE CARGO SET NAME="${cargo.name}", TRASPORT_DUE_DATE=${cargo.transportDueDate}, DESCRIPTION=${cargo.description}, TRUCKER_ID=${cargo.truckerId}, STATUS="${cargo.status}" WHERE CARGO_ID=${cargo.cargoId}`;
+    const query = `UPDATE CARGO SET NAME="${cargo.name}", TRASPORT_DUE_DATE=${cargo.transportDueDate}, DESCRIPTION=${cargo.description}, DETERMINED_TRUCKER_ID=${cargo.determinedTruckerId}, STATUS="${cargo.status}" WHERE CARGO_ID=${cargo.cargoId}`;
     const conn = await createConnection(DB_CONFIG);
     const [rows, fields]: [CargoPacket[], FieldPacket[]] = await conn.query(
       query

@@ -10,7 +10,7 @@ describe("cargo test", () => {
     expect(cargo.transportDueDate).to.equal("2023-02-20");
     expect(cargo.description).to.equal(undefined);
     expect(cargo.ownerId).to.equal(0);
-    expect(cargo.truckerId).to.equal(0)
+    expect(cargo.determinedTruckerId).to.equal(0);
     expect(cargo.status).to.equal("todo");
   });
 });

@@ -93,7 +93,7 @@ describe("TruckerImpl test", () => {
   it("TruckerImpl method changeCargoStatus test", () => {
     const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
-    localCargo.truckerId = 0;
+    localCargo.determinedTruckerId = 0;
 
     const result = trucker.changeCargoStatus(localCargo);
 
@@ -116,7 +116,7 @@ describe("TruckerImpl test", () => {
   it("TruckerImpl method changeCargoStatus wrong trucker test", () => {
     const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
-    localCargo.truckerId = 1;
+    localCargo.determinedTruckerId = 1;
 
     assert.throw(
       () => {
@@ -130,7 +130,7 @@ describe("TruckerImpl test", () => {
   it("TruckerImpl method changeCargoStatus wrong status test", () => {
     const localCargo = owner.registerCargo(1, "cargo", "2023-02-20", undefined);
 
-    localCargo.truckerId = 0;
+    localCargo.determinedTruckerId = 0;
     localCargo.status = "progress";
 
     assert.throw(

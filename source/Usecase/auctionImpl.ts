@@ -76,7 +76,7 @@ class AuctionImpl implements Auction {
     this.determinedTruckerId =
       this.auctionHistory[this.auctionHistory.length - 1].truckerId;
 
-    this.cargo.truckerId =
+    this.cargo.determinedTruckerId =
       this.auctionHistory[this.auctionHistory.length - 1].truckerId;
   }
 

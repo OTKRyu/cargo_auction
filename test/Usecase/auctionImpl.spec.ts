@@ -224,7 +224,7 @@ describe("auction test", () => {
     auction.status = "done";
 
     expect(auction.determinedTruckerId).to.equal(undefined);
-    expect(auction.cargo.truckerId).to.equal(undefined);
+    expect(auction.cargo.determinedTruckerId).to.equal(undefined);
   });
 
   it("auction method determineTrucker test", () => {
@@ -252,7 +252,7 @@ describe("auction test", () => {
     auction.determineTrucker();
 
     expect(auction.determinedTruckerId).to.equal(truckerId);
-    expect(auction.cargo.truckerId).to.equal(truckerId);
+    expect(auction.cargo.determinedTruckerId).to.equal(truckerId);
   });
 
   it("auction method startAuction test", () => {
