@@ -75,4 +75,47 @@ router.post("/cargo", async (req: Request, res: Response) => {
   }
 });
 
+router.post("/auction", async (req: Request, res: Response) => {
+  try {
+    const ownerId: number = req.body.ownerId;
+    const cargoId: number = req.body.cargoId;
+    const auctionExpireDate: string = req.body.auctionExpireDate;
+    const auctionStartDate: string = req.body.auctionStartDate;
+    const transportFeeUpperLimit: number = req.body.transportFeeUpperLimit;
+
+    const accountPermanence = new AccountPermanenceImpl();
+    const ownerPermanence = new OwnerPermanenceImpl(accountPermanence);
+    const truckerPermanence = new TruckerPermanenceImpl(accountPermanence);
+    const cargoPermanence = new CargoPermanenceImpl(
+      ownerPermanence,
+      truckerPermanence
+    );
+    const auctionPermanence = new AuctionPermanenceImpl(
+      ownerPermanence,
+      truckerPermanence,
+      cargoPermanence
+    );
+
+    const owner = await ownerPermanence.getOwner(ownerId);
+
+    const ownerController = new OwnerController(
+      ownerPermanence,
+      truckerPermanence,
+      cargoPermanence,
+      auctionPermanence,
+      owner
+    );
+
+    const auction = await ownerController.createNewAuction(
+      cargoId,
+      auctionExpireDate,
+      auctionStartDate,
+      transportFeeUpperLimit
+    );
+    res.status(201).json(auction);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 export default router;

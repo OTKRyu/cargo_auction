@@ -41,6 +41,7 @@ class OwnerController {
     await this.cargoPermanence.saveCargo(cargo);
     return cargo;
   }
+
   async createNewAuction(
     cargoId: number,
     auctionExpireDate: string,
