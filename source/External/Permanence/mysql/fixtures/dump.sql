@@ -172,7 +172,7 @@ CREATE TABLE `engine_cost` (
 
 LOCK TABLES `engine_cost` WRITE;
 /*!40000 ALTER TABLE `engine_cost` DISABLE KEYS */;
-INSERT INTO `engine_cost` (`engine_name`, `device_type`, `cost_name`, `cost_value`, `last_update`, `comment`) VALUES ('default',0,'io_block_read_cost',NULL,'2023-04-27 11:37:45',NULL),('default',0,'memory_block_read_cost',NULL,'2023-04-27 11:37:45',NULL);
+INSERT INTO `engine_cost` (`engine_name`, `device_type`, `cost_name`, `cost_value`, `last_update`, `comment`) VALUES ('default',0,'io_block_read_cost',NULL,'2023-06-12 11:22:18',NULL),('default',0,'memory_block_read_cost',NULL,'2023-06-12 11:22:18',NULL);
 /*!40000 ALTER TABLE `engine_cost` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +352,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_index_stats` VALUES ('cargo_auction','account','PRIMARY','2023-04-27 12:05:11','n_diff_pfx01',0,1,'ACCOUNT_ID'),('cargo_auction','account','PRIMARY','2023-04-27 12:05:11','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','account','PRIMARY','2023-04-27 12:05:11','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','CARGO_ID','2023-04-27 12:29:46','n_diff_pfx01',0,1,'CARGO_ID'),('cargo_auction','auction','CARGO_ID','2023-04-27 12:29:46','n_diff_pfx02',0,1,'CARGO_ID,AUCTION_ID'),('cargo_auction','auction','CARGO_ID','2023-04-27 12:29:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','CARGO_ID','2023-04-27 12:29:46','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','OWNER_ID','2023-04-27 12:29:46','n_diff_pfx01',0,1,'OWNER_ID'),('cargo_auction','auction','OWNER_ID','2023-04-27 12:29:46','n_diff_pfx02',0,1,'OWNER_ID,AUCTION_ID'),('cargo_auction','auction','OWNER_ID','2023-04-27 12:29:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','OWNER_ID','2023-04-27 12:29:46','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','PRIMARY','2023-04-27 12:29:46','n_diff_pfx01',0,1,'AUCTION_ID'),('cargo_auction','auction','PRIMARY','2023-04-27 12:29:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','PRIMARY','2023-04-27 12:29:46','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','TRUCKER_ID','2023-04-27 12:29:46','n_diff_pfx01',0,1,'TRUCKER_ID'),('cargo_auction','auction','TRUCKER_ID','2023-04-27 12:29:46','n_diff_pfx02',0,1,'TRUCKER_ID,AUCTION_ID'),('cargo_auction','auction','TRUCKER_ID','2023-04-27 12:29:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','TRUCKER_ID','2023-04-27 12:29:46','size',1,NULL,'Number of pages in the index'),('cargo_auction','cargo','OWNER_ID','2023-04-27 12:29:01','n_diff_pfx01',0,1,'OWNER_ID'),('cargo_auction','cargo','OWNER_ID','2023-04-27 12:29:01','n_diff_pfx02',0,1,'OWNER_ID,CARGO_ID'),('cargo_auction','cargo','OWNER_ID','2023-04-27 12:29:01','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','cargo','OWNER_ID','2023-04-27 12:29:01','size',1,NULL,'Number of pages in the index'),('cargo_auction','cargo','PRIMARY','2023-04-27 12:29:01','n_diff_pfx01',0,1,'CARGO_ID'),('cargo_auction','cargo','PRIMARY','2023-04-27 12:29:01','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','cargo','PRIMARY','2023-04-27 12:29:01','size',1,NULL,'Number of pages in the index'),('cargo_auction','cargo','TRUCKER_ID','2023-04-27 12:29:01','n_diff_pfx01',0,1,'TRUCKER_ID'),('cargo_auction','cargo','TRUCKER_ID','2023-04-27 12:29:01','n_diff_pfx02',0,1,'TRUCKER_ID,CARGO_ID'),('cargo_auction','cargo','TRUCKER_ID','2023-04-27 12:29:01','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','cargo','TRUCKER_ID','2023-04-27 12:29:01','size',1,NULL,'Number of pages in the index'),('cargo_auction','owner','ACCOUNT_ID','2023-04-27 12:28:17','n_diff_pfx01',0,1,'ACCOUNT_ID'),('cargo_auction','owner','ACCOUNT_ID','2023-04-27 12:28:17','n_diff_pfx02',0,1,'ACCOUNT_ID,OWNER_ID'),('cargo_auction','owner','ACCOUNT_ID','2023-04-27 12:28:17','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','owner','ACCOUNT_ID','2023-04-27 12:28:17','size',1,NULL,'Number of pages in the index'),('cargo_auction','owner','PRIMARY','2023-04-27 12:28:17','n_diff_pfx01',0,1,'OWNER_ID'),('cargo_auction','owner','PRIMARY','2023-04-27 12:28:17','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','owner','PRIMARY','2023-04-27 12:28:17','size',1,NULL,'Number of pages in the index'),('cargo_auction','trucker','ACCOUNT_ID','2023-04-27 12:26:12','n_diff_pfx01',0,1,'ACCOUNT_ID'),('cargo_auction','trucker','ACCOUNT_ID','2023-04-27 12:26:12','n_diff_pfx02',0,1,'ACCOUNT_ID,TRUCKER_ID'),('cargo_auction','trucker','ACCOUNT_ID','2023-04-27 12:26:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','trucker','ACCOUNT_ID','2023-04-27 12:26:12','size',1,NULL,'Number of pages in the index'),('cargo_auction','trucker','PRIMARY','2023-04-27 12:26:12','n_diff_pfx01',0,1,'TRUCKER_ID'),('cargo_auction','trucker','PRIMARY','2023-04-27 12:26:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','trucker','PRIMARY','2023-04-27 12:26:12','size',1,NULL,'Number of pages in the index'),('mysql','component','PRIMARY','2023-04-27 11:37:45','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2023-04-27 11:37:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2023-04-27 11:37:45','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2023-04-27 11:37:47','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2023-04-27 11:37:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2023-04-27 11:37:47','size',1,NULL,'Number of pages in the index');
+INSERT  IGNORE INTO `innodb_index_stats` VALUES ('cargo_auction','account','PRIMARY','2023-06-12 11:25:18','n_diff_pfx01',0,1,'ACCOUNT_ID'),('cargo_auction','account','PRIMARY','2023-06-12 11:25:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','account','PRIMARY','2023-06-12 11:25:18','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','CARGO_ID','2023-06-12 11:25:52','n_diff_pfx01',0,1,'CARGO_ID'),('cargo_auction','auction','CARGO_ID','2023-06-12 11:25:52','n_diff_pfx02',0,1,'CARGO_ID,AUCTION_ID'),('cargo_auction','auction','CARGO_ID','2023-06-12 11:25:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','CARGO_ID','2023-06-12 11:25:52','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','DETERMINED_TRUCKER_ID','2023-06-12 11:25:52','n_diff_pfx01',0,1,'DETERMINED_TRUCKER_ID'),('cargo_auction','auction','DETERMINED_TRUCKER_ID','2023-06-12 11:25:52','n_diff_pfx02',0,1,'DETERMINED_TRUCKER_ID,AUCTION_ID'),('cargo_auction','auction','DETERMINED_TRUCKER_ID','2023-06-12 11:25:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','DETERMINED_TRUCKER_ID','2023-06-12 11:25:52','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','OWNER_ID','2023-06-12 11:25:52','n_diff_pfx01',0,1,'OWNER_ID'),('cargo_auction','auction','OWNER_ID','2023-06-12 11:25:52','n_diff_pfx02',0,1,'OWNER_ID,AUCTION_ID'),('cargo_auction','auction','OWNER_ID','2023-06-12 11:25:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','OWNER_ID','2023-06-12 11:25:52','size',1,NULL,'Number of pages in the index'),('cargo_auction','auction','PRIMARY','2023-06-12 11:25:52','n_diff_pfx01',0,1,'AUCTION_ID'),('cargo_auction','auction','PRIMARY','2023-06-12 11:25:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','auction','PRIMARY','2023-06-12 11:25:52','size',1,NULL,'Number of pages in the index'),('cargo_auction','cargo','OWNER_ID','2023-06-12 11:25:47','n_diff_pfx01',0,1,'OWNER_ID'),('cargo_auction','cargo','OWNER_ID','2023-06-12 11:25:47','n_diff_pfx02',0,1,'OWNER_ID,CARGO_ID'),('cargo_auction','cargo','OWNER_ID','2023-06-12 11:25:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','cargo','OWNER_ID','2023-06-12 11:25:47','size',1,NULL,'Number of pages in the index'),('cargo_auction','cargo','PRIMARY','2023-06-12 11:25:47','n_diff_pfx01',0,1,'CARGO_ID'),('cargo_auction','cargo','PRIMARY','2023-06-12 11:25:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','cargo','PRIMARY','2023-06-12 11:25:47','size',1,NULL,'Number of pages in the index'),('cargo_auction','cargo','TRUCKER_ID','2023-06-12 11:25:47','n_diff_pfx01',0,1,'TRUCKER_ID'),('cargo_auction','cargo','TRUCKER_ID','2023-06-12 11:25:47','n_diff_pfx02',0,1,'TRUCKER_ID,CARGO_ID'),('cargo_auction','cargo','TRUCKER_ID','2023-06-12 11:25:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','cargo','TRUCKER_ID','2023-06-12 11:25:47','size',1,NULL,'Number of pages in the index'),('cargo_auction','owner','ACCOUNT_ID','2023-06-12 11:25:30','n_diff_pfx01',0,1,'ACCOUNT_ID'),('cargo_auction','owner','ACCOUNT_ID','2023-06-12 11:25:30','n_diff_pfx02',0,1,'ACCOUNT_ID,OWNER_ID'),('cargo_auction','owner','ACCOUNT_ID','2023-06-12 11:25:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','owner','ACCOUNT_ID','2023-06-12 11:25:30','size',1,NULL,'Number of pages in the index'),('cargo_auction','owner','PRIMARY','2023-06-12 11:25:30','n_diff_pfx01',0,1,'OWNER_ID'),('cargo_auction','owner','PRIMARY','2023-06-12 11:25:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','owner','PRIMARY','2023-06-12 11:25:30','size',1,NULL,'Number of pages in the index'),('cargo_auction','trucker','ACCOUNT_ID','2023-06-12 11:25:36','n_diff_pfx01',0,1,'ACCOUNT_ID'),('cargo_auction','trucker','ACCOUNT_ID','2023-06-12 11:25:36','n_diff_pfx02',0,1,'ACCOUNT_ID,TRUCKER_ID'),('cargo_auction','trucker','ACCOUNT_ID','2023-06-12 11:25:36','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','trucker','ACCOUNT_ID','2023-06-12 11:25:36','size',1,NULL,'Number of pages in the index'),('cargo_auction','trucker','PRIMARY','2023-06-12 11:25:36','n_diff_pfx01',0,1,'TRUCKER_ID'),('cargo_auction','trucker','PRIMARY','2023-06-12 11:25:36','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('cargo_auction','trucker','PRIMARY','2023-06-12 11:25:36','size',1,NULL,'Number of pages in the index'),('mysql','component','PRIMARY','2023-06-12 11:22:18','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2023-06-12 11:22:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2023-06-12 11:22:18','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2023-06-12 11:22:20','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2023-06-12 11:22:20','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2023-06-12 11:22:20','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -360,7 +360,7 @@ INSERT  IGNORE INTO `innodb_index_stats` VALUES ('cargo_auction','account','PRIM
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_table_stats` VALUES ('cargo_auction','account','2023-04-27 12:05:11',0,1,0),('cargo_auction','auction','2023-04-27 12:29:46',0,1,3),('cargo_auction','cargo','2023-04-27 12:29:01',0,1,2),('cargo_auction','owner','2023-04-27 12:28:17',0,1,1),('cargo_auction','trucker','2023-04-27 12:26:12',0,1,1),('mysql','component','2023-04-27 11:37:45',0,1,0),('sys','sys_config','2023-04-27 11:37:47',6,1,0);
+INSERT  IGNORE INTO `innodb_table_stats` VALUES ('cargo_auction','account','2023-06-12 11:25:18',0,1,0),('cargo_auction','auction','2023-06-12 11:25:52',0,1,3),('cargo_auction','cargo','2023-06-12 11:25:47',0,1,2),('cargo_auction','owner','2023-06-12 11:25:30',0,1,1),('cargo_auction','trucker','2023-06-12 11:25:36',0,1,1),('mysql','component','2023-06-12 11:22:18',0,1,0),('sys','sys_config','2023-06-12 11:22:20',6,1,0);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -500,7 +500,7 @@ CREATE TABLE `proxies_priv` (
 
 LOCK TABLES `proxies_priv` WRITE;
 /*!40000 ALTER TABLE `proxies_priv` DISABLE KEYS */;
-INSERT INTO `proxies_priv` VALUES ('localhost','root','','',1,'boot@','2023-04-27 11:37:45');
+INSERT INTO `proxies_priv` VALUES ('localhost','root','','',1,'boot@','2023-06-12 11:22:18');
 /*!40000 ALTER TABLE `proxies_priv` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -659,7 +659,7 @@ CREATE TABLE `server_cost` (
 
 LOCK TABLES `server_cost` WRITE;
 /*!40000 ALTER TABLE `server_cost` DISABLE KEYS */;
-INSERT INTO `server_cost` (`cost_name`, `cost_value`, `last_update`, `comment`) VALUES ('disk_temptable_create_cost',NULL,'2023-04-27 11:37:45',NULL),('disk_temptable_row_cost',NULL,'2023-04-27 11:37:45',NULL),('key_compare_cost',NULL,'2023-04-27 11:37:45',NULL),('memory_temptable_create_cost',NULL,'2023-04-27 11:37:45',NULL),('memory_temptable_row_cost',NULL,'2023-04-27 11:37:45',NULL),('row_evaluate_cost',NULL,'2023-04-27 11:37:45',NULL);
+INSERT INTO `server_cost` (`cost_name`, `cost_value`, `last_update`, `comment`) VALUES ('disk_temptable_create_cost',NULL,'2023-06-12 11:22:18',NULL),('disk_temptable_row_cost',NULL,'2023-06-12 11:22:18',NULL),('key_compare_cost',NULL,'2023-06-12 11:22:18',NULL),('memory_temptable_create_cost',NULL,'2023-06-12 11:22:18',NULL),('memory_temptable_row_cost',NULL,'2023-06-12 11:22:18',NULL),('row_evaluate_cost',NULL,'2023-06-12 11:22:18',NULL);
 /*!40000 ALTER TABLE `server_cost` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -824,7 +824,7 @@ CREATE TABLE `tables_priv` (
 
 LOCK TABLES `tables_priv` WRITE;
 /*!40000 ALTER TABLE `tables_priv` DISABLE KEYS */;
-INSERT INTO `tables_priv` VALUES ('localhost','mysql','mysql.session','user','boot@','2023-04-27 11:37:46','Select',''),('localhost','sys','mysql.sys','sys_config','root@localhost','2023-04-27 11:37:46','Select','');
+INSERT INTO `tables_priv` VALUES ('localhost','mysql','mysql.session','user','boot@','2023-06-12 11:22:20','Select',''),('localhost','sys','mysql.sys','sys_config','root@localhost','2023-06-12 11:22:20','Select','');
 /*!40000 ALTER TABLE `tables_priv` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1022,7 +1022,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('%','root','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'caching_sha2_password','$A$005$4_cs\r|{b=%g3~b+)>bM6/ZMJlas6kv8RjO0oudaWEwR5vI1CtfEoZKsygHHD','N','2023-04-27 11:37:59',NULL,'N','Y','Y',NULL,NULL,NULL,NULL),('localhost','mysql.infoschema','Y','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','','','','',0,0,0,0,'caching_sha2_password','$A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED','N','2023-04-27 11:37:46',NULL,'Y','N','N',NULL,NULL,NULL,NULL),('localhost','mysql.session','N','N','N','N','N','N','N','Y','N','N','N','N','N','N','N','Y','N','N','N','N','N','N','N','N','N','N','N','N','N','','','','',0,0,0,0,'caching_sha2_password','$A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED','N','2023-04-27 11:37:46',NULL,'Y','N','N',NULL,NULL,NULL,NULL),('localhost','mysql.sys','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','','','','',0,0,0,0,'caching_sha2_password','$A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED','N','2023-04-27 11:37:46',NULL,'Y','N','N',NULL,NULL,NULL,NULL),('localhost','root','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'caching_sha2_password','$A$005$Vn\\\"0H08KL|~&\r%Hc4d4Kxev0E8t.7fmctQsicWxKqCv.IjN9Rs5dKplF7','N','2023-04-27 11:37:59',NULL,'N','Y','Y',NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES ('%','root','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'caching_sha2_password','$A$005$#%+J?Gf&8:vmCAJ+/indCwDl4bNK/4ih1H4GVt3aX4tPArRBt.Ip/55lQs3','N','2023-06-12 11:22:35',NULL,'N','Y','Y',NULL,NULL,NULL,NULL),('localhost','mysql.infoschema','Y','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','','','','',0,0,0,0,'caching_sha2_password','$A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED','N','2023-06-12 11:22:20',NULL,'Y','N','N',NULL,NULL,NULL,NULL),('localhost','mysql.session','N','N','N','N','N','N','N','Y','N','N','N','N','N','N','N','Y','N','N','N','N','N','N','N','N','N','N','N','N','N','','','','',0,0,0,0,'caching_sha2_password','$A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED','N','2023-06-12 11:22:20',NULL,'Y','N','N',NULL,NULL,NULL,NULL),('localhost','mysql.sys','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','','','','',0,0,0,0,'caching_sha2_password','$A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED','N','2023-06-12 11:22:20',NULL,'Y','N','N',NULL,NULL,NULL,NULL),('localhost','root','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'caching_sha2_password','$A$005$(R52&Na&ee\"\'!/`&\nHoWsazcHCV/QBFgTdjuU3BRmxzH7zgH17tVt/tMoTeC','N','2023-06-12 11:22:35',NULL,'N','Y','Y',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1106,19 +1106,18 @@ CREATE TABLE `AUCTION` (
   `AUCTION_ID` int NOT NULL,
   `CARGO_ID` int DEFAULT NULL,
   `OWNER_ID` int DEFAULT NULL,
-  `TRUCKER_ID` int DEFAULT NULL,
   `AUCTION_EXPIRE_DATE` date DEFAULT NULL,
   `AUCTION_START_DATE` date DEFAULT NULL,
   `TRANSPORT_FEE_UPPER_LIMIT` int DEFAULT NULL,
-  `DETERMINED_TUCKER_ID` int DEFAULT NULL,
-  `AUCTION_STATUS` varchar(255) DEFAULT NULL,
+  `DETERMINED_TRUCKER_ID` int DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`AUCTION_ID`),
   KEY `CARGO_ID` (`CARGO_ID`),
   KEY `OWNER_ID` (`OWNER_ID`),
-  KEY `TRUCKER_ID` (`TRUCKER_ID`),
+  KEY `DETERMINED_TRUCKER_ID` (`DETERMINED_TRUCKER_ID`),
   CONSTRAINT `auction_ibfk_1` FOREIGN KEY (`CARGO_ID`) REFERENCES `CARGO` (`CARGO_ID`) ON DELETE CASCADE,
   CONSTRAINT `auction_ibfk_2` FOREIGN KEY (`OWNER_ID`) REFERENCES `OWNER` (`OWNER_ID`) ON DELETE CASCADE,
-  CONSTRAINT `auction_ibfk_3` FOREIGN KEY (`TRUCKER_ID`) REFERENCES `TRUCKER` (`TRUCKER_ID`) ON DELETE CASCADE
+  CONSTRAINT `auction_ibfk_3` FOREIGN KEY (`DETERMINED_TRUCKER_ID`) REFERENCES `TRUCKER` (`TRUCKER_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1140,12 +1139,12 @@ DROP TABLE IF EXISTS `CARGO`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CARGO` (
   `CARGO_ID` int NOT NULL,
-  `CARGO_NAME` varchar(255) DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
   `TRANSPORT_DUE_DATE` date DEFAULT NULL,
-  `CARGO_DESCRIPTION` text,
+  `DESCRIPTION` text,
   `OWNER_ID` int DEFAULT NULL,
   `TRUCKER_ID` int DEFAULT NULL,
-  `CARGO_STATUS` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`CARGO_ID`),
   KEY `OWNER_ID` (`OWNER_ID`),
   KEY `TRUCKER_ID` (`TRUCKER_ID`),
@@ -1225,4 +1224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-27 12:41:05
+-- Dump completed on 2023-06-12 11:29:08
