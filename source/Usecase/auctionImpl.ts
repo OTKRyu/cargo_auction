@@ -40,7 +40,7 @@ class AuctionImpl implements Auction {
       return this.transportFeeUpperLimit;
     }
 
-    let minimumBid: Bid = this.auctionHistory[this.auctionHistory.length - 1];
+    const minimumBid: Bid = this.auctionHistory[this.auctionHistory.length - 1];
     return minimumBid.transportFee;
   }
 
