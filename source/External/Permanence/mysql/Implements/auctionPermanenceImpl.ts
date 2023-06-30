@@ -58,9 +58,7 @@ class AuctionPermanenceImpl implements AuctionPermanence {
   async getAuction(auctionId: number) {
     const query = `SELECT AUCTION_ID, CARGO_ID, OWNER_ID, DATE_FORMAT(AUCTION_EXPIRE_DATE,"%Y-%m-%d) AS AUCTION_EXPIRE_DATE, DATE_FORMAT(AUCTION_START_DATE,"%Y-%m-%d") AS AUCTION_START_DATE, TRANSPORT_FEE_UPPER_LIMIT, DETERMINED_TRUCKER_ID, STATUS  FROM AUCTION WHERE AUCTION_ID = ${auctionId}`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [AuctionPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    const [rows]: [AuctionPacket[], FieldPacket[]] = await conn.query(query);
     await conn.end();
     const result = this.changeAuctionPacketToAuction(rows[0]);
     return result;
@@ -69,8 +67,9 @@ class AuctionPermanenceImpl implements AuctionPermanence {
   async getNewAuctionId() {
     const query = `SELECT MAX(AUCTION_ID) AS MAX_AUCTION_ID FROM AUCTION`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [MaxAuctionIdPacket[], FieldPacket[]] =
-      await conn.query(query);
+    const [rows]: [MaxAuctionIdPacket[], FieldPacket[]] = await conn.query(
+      query
+    );
     await conn.end();
 
     if (
@@ -86,9 +85,7 @@ class AuctionPermanenceImpl implements AuctionPermanence {
   async saveAuction(auction: Auction) {
     const query = `INSERT INTO AUCTION (AUCTION_ID, CARGO_ID, OWNER_ID, AUCTION_EXPIRE_DATE, AUCTION_START_DATE, TRANSPORT_FEE_UPPER_LIMIT, STATUS) VALUES(${auction.auctionId},${auction.cargo.cargoId},${auction.ownerId},"${auction.auctionExpireDate}","${auction.auctionStartDate}",${auction.transportFeeUpperLimit},"${auction.status}")`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [AuctionPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    await conn.query(query);
     await conn.end();
   }
 
@@ -96,18 +93,14 @@ class AuctionPermanenceImpl implements AuctionPermanence {
     await this.cargoPermanence.fetchCargo(auction.cargo);
     const query = `UPDATE AUCTION DETERMINED_TRUCKER_ID=${auction.determinedTruckerId}, STATUS="${auction.status}" WHERE AUCTION_ID=${auction.auctionId}`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [AuctionPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    await conn.query(query);
     await conn.end();
   }
 
   async getStartSoonAuctions() {
     const query = `SELECT * FROM AUCTION WHERE DATE(AUCTION_START_DATE) = DATE(NOW())`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [AuctionPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    const [rows]: [AuctionPacket[], FieldPacket[]] = await conn.query(query);
     await conn.end();
     const result: Array<Auction> = [];
     for (let i = 0; i < rows.length; i++) {
