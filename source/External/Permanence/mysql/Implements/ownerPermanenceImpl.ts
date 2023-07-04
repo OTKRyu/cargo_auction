@@ -42,9 +42,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
   async getOwner(ownerId: number) {
     const query = `SELECT * FROM OWNER WHERE OWNER_ID = ${ownerId}`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [OwnerPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    const [rows]: [OwnerPacket[], FieldPacket[]] = await conn.query(query);
     await conn.end();
     const result = await this.changeOwnerPacketToOwner(rows[0]);
     return result;
@@ -53,8 +51,7 @@ class OwnerPermanenceImpl implements OwnerPermanence {
   async getNewOwnerId() {
     const query = `SELECT MAX(OWNER_ID) AS MAX_OWNER_ID FROM OWNER`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [MaxOwnerIdPacket[], FieldPacket[]] =
-      await conn.query(query);
+    const [rows]: [MaxOwnerIdPacket[], FieldPacket[]] = await conn.query(query);
     await conn.end();
 
     if (rows[0].MAX_OWNER_ID === undefined || rows[0].MAX_OWNER_ID === null) {

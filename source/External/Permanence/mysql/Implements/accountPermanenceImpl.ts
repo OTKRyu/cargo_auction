@@ -25,9 +25,7 @@ class AccountPermanenceImpl implements AccountPermanence {
   async getAccount(accountId: number) {
     const query = `SELECT * FROM ACCOUNT WHERE ACCOUNT_ID = ${accountId}`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [AccountPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    const [rows]: [AccountPacket[], FieldPacket[]] = await conn.query(query);
     await conn.end();
     const result = this.changeAccountPacketToAccount(rows[0]);
     return result;
@@ -36,8 +34,9 @@ class AccountPermanenceImpl implements AccountPermanence {
   async getNewAccountId() {
     const query = `SELECT MAX(ACCOUNT_ID) AS MAX_ACCOUNT_ID FROM ACCOUNT`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [MaxAccountIdPacket[], FieldPacket[]] =
-      await conn.query(query);
+    const [rows]: [MaxAccountIdPacket[], FieldPacket[]] = await conn.query(
+      query
+    );
     await conn.end();
 
     if (

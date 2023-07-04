@@ -65,8 +65,7 @@ class OwnerImpl implements Owner {
       throw new Error("Your auction doesn't have trucker");
     }
 
-    let minimumTranportFee: number;
-    minimumTranportFee = auction.findMinimumTransportFee();
+    const minimumTranportFee: number = auction.findMinimumTransportFee();
 
     this.account.withdraw(minimumTranportFee);
     trucker.account.deposit(minimumTranportFee);

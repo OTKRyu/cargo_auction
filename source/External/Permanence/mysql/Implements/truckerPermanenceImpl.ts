@@ -42,9 +42,7 @@ class TruckerPermanenceImpl implements TruckerPermanence {
   async getTrucker(truckerId: number) {
     const query = `SELECT * FROM TRUCKER WHERE TRUCKER_ID = ${truckerId}`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [TruckerPacket[], FieldPacket[]] = await conn.query(
-      query
-    );
+    const [rows]: [TruckerPacket[], FieldPacket[]] = await conn.query(query);
     conn.end();
     const result = await this.changeTruckerPacketToTrucker(rows[0]);
     return result;
@@ -53,8 +51,9 @@ class TruckerPermanenceImpl implements TruckerPermanence {
   async getNewTruckerId() {
     const query = `SELECT MAX(TRUCKER_ID) AS MAX_TRUCKER_ID FROM TRUCKER`;
     const conn = await createConnection(DB_CONFIG);
-    const [rows, fields]: [MaxTruckerIdPacket[], FieldPacket[]] =
-      await conn.query(query);
+    const [rows]: [MaxTruckerIdPacket[], FieldPacket[]] = await conn.query(
+      query
+    );
     await conn.end();
 
     if (

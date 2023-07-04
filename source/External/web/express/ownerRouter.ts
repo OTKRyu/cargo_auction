@@ -75,6 +75,42 @@ router.post("/cargo", async (req: Request, res: Response) => {
   }
 });
 
+router.put("/cargo", async (req: Request, res: Response) => {
+  try {
+    const ownerId: number = req.body.ownerId;
+    const cargoId: number = req.body.cargoId;
+
+    const accountPermanence = new AccountPermanenceImpl();
+    const ownerPermanence = new OwnerPermanenceImpl(accountPermanence);
+    const truckerPermanence = new TruckerPermanenceImpl(accountPermanence);
+    const cargoPermanence = new CargoPermanenceImpl(
+      ownerPermanence,
+      truckerPermanence
+    );
+    const auctionPermanence = new AuctionPermanenceImpl(
+      ownerPermanence,
+      truckerPermanence,
+      cargoPermanence
+    );
+
+    const owner = await ownerPermanence.getOwner(ownerId);
+
+    const ownerController = new OwnerController(
+      ownerPermanence,
+      truckerPermanence,
+      cargoPermanence,
+      auctionPermanence,
+      owner
+    );
+
+    const cargo = await ownerController.changeCargoStatus(cargoId);
+
+    res.status(201).json(cargo);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.post("/auction", async (req: Request, res: Response) => {
   try {
     const ownerId: number = req.body.ownerId;
